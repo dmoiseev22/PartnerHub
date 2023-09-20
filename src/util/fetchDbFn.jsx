@@ -28,5 +28,5 @@ export default function fetchDbFn(collection){
         })
     }, [])
     
-    return <></>
+    return 
 }

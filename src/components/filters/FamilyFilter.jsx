@@ -1,50 +1,92 @@
 import React from 'react'
-import clearFilterImg from '../../../src/assets/clear.png'
 
-export default function FamilyFilter({ handleFilterChange, familyFilter }) {
+export default function FamilyFilter({ handleFilterChange, familyFilterParam, clearFilters }) {
+
+    console.log("familyFilterParam: ", familyFilterParam)
 
     return (
         <div className="tools-list-filter-buttons-family">
 
-            <h3>Search by product family</h3>
+            <h3>Filter by product family</h3>
             
             <button
                 onClick={() => {
+                    clearFilters()
                     handleFilterChange("family", "blades")}
                 }
 
                 className={
                     `tools-family blades 
-                    ${familyFilter === "blades" ? "selected" : ""}`
+                    ${familyFilterParam === "blades" ? "selected" : ""}`
                 }
             > Blades</button>
 
             <button
-                onClick={() => 
+                onClick={() => {
+                    clearFilters()
+                    handleFilterChange("family", "segments")}
+                }
+
+                className={
+                    `tools-family segments 
+                    ${familyFilterParam === "segments" ? "selected" : ""}`
+                }
+            >Segments</button>      
+
+            <button
+                onClick={() => {
+                    clearFilters()
                     handleFilterChange("family", "drills")}
+                }
                 className={
                     `tools-family wire 
-                    ${familyFilter === "drills" ? "selected" : ""}`
+                    ${familyFilterParam === "drills" ? "selected" : ""}`
                 }
             >Drill bits</button>
 
             <button
                 onClick={() => {
+                    clearFilters()
+                    handleFilterChange("family", "grinding")}
+                }
+
+                className={
+                    `tools-family grinding 
+                    ${familyFilterParam === "grinding" ? "selected" : ""}`
+                }
+            >Grinding</button>      
+            
+            <button
+                onClick={() => {
+                    clearFilters()
+                    handleFilterChange("family", "precast")}
+                }
+
+                className={
+                    `tools-family precast 
+                    ${familyFilterParam === "precast" ? "selected" : ""}`
+                }
+            >Precast</button>      
+            
+            <button
+                onClick={() => {
+                    clearFilters()
                     handleFilterChange("family", "wire")}
                 }
 
                 className={
                     `tools-family wire 
-                    ${familyFilter === "wire" ? "selected" : ""}`
+                    ${familyFilterParam === "wire" ? "selected" : ""}`
                 }
             >Diamond Wire</button>
 
-            {familyFilter ? (
+
+            {familyFilterParam ? (
                     <button
                         onClick={() => 
                             handleFilterChange("family", null)}
                         className="tools-family clear-filters"
-                    >Clear filters</button>
+                    >Clear all </button>
                 ) : null}   
 
         </div>

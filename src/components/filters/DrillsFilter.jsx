@@ -1,80 +1,95 @@
 import React from 'react'
 import clearFilterImg from '../../../src/assets/clear.png'
+import { getFilterClass, capitalizeFirstLetter } from "../../util/util.js"
 
-export default function WireFilter({ handleFilterChange, machineFilter, materialFilter }) {
+export default function DrillsFilter({ handleFilterChange, machineFilterParam, materialFilterParam }) {
+
+    const machineFilterButtons = [
+        "drilling machine", 
+        "angle grinder"
+    ]
+
+    const materialFilterButtons = [
+        "concrete", 
+        "masonry",
+        "asphalt",
+        "porcelain",
+        "hard ceramics",
+        "granite",
+        "tiles", 
+        "marble"
+    ]
 
     return (
         <>
             <div className="tools-list-filter-buttons-machines">
 
+                <h3>Machine</h3>
+
                 {/* FIRST ROW OF FILTER BUTTONS */}
+                {machineFilterButtons.map(filter => {
+                        const filterClass = getFilterClass(filter)
+                        const filterName = capitalizeFirstLetter(filter)
+                        console.log('filter', filter)
+                        return (
+                            <button
+                                key={filter}
+                                onClick={() => handleFilterChange("machine", filter)}
+                                className={
+                                    `tools-machine 
+                                    ${filterClass}
+                                    ${machineFilterParam === filter ? "selected" : ""}`
+                                }
+                                >{filterName}
+                            </button>
+                        )
+                    })
+                }
+
+                {/* CLEAR MACHINE FILTER */}
+                {machineFilterParam ? (
                     <button
-                        onClick={() => handleFilterChange("machine", "drilling machine")}
-                        className={
-                            `tools-machine drilling-machine
-                            ${machineFilter === "drilling machine" ? "selected" : ""}`
-                        }
-                    >Drilling machine</button>
+                        onClick={() => handleFilterChange("machine", null)}
+                        className="tools-machine clear-filters"
+                    >   Clear filter
+                        {/* <img src={clearFilterImg} /> */}
+                    </button>
+                ) : null}
 
+            </div>
 
+            {/* SECOND ROW OF FILTER BUTTONS */}
+            <div className="tools-list-filter-buttons-materials">
 
-                    {machineFilter ? (
-                        <button
-                            onClick={() => handleFilterChange("machine", null)}
-                            className="tools-machine clear-filters"
-                        >
-                            <img src={clearFilterImg} />
-                        </button>
-                    ) : null}
-
-                </div>
-
-                {/* SECOND ROW OF FILTER BUTTONS */}
-                <div className="tools-list-filter-buttons-materials">
-
-                    <h3></h3>
+                <h3>Material</h3>
+                
+                {materialFilterButtons.map(filter => {
+                        const filterClass = getFilterClass(filter)
+                        return (
+                            <button
+                                key={filter}
+                                onClick={() => handleFilterChange("material", filter)}
+                                className={
+                                    `tools-material 
+                                    ${filterClass}
+                                    ${materialFilterParam === filter ? "selected" : ""}`
+                                }
+                                >{capitalizeFirstLetter(filter)}
+                            </button>
+                        )
+                    })
+                }
+                {/* CLEAR MATERIAL FILTER */}
+                {materialFilterParam ? (
                     <button
-                        onClick={() => handleFilterChange("material", "concrete")}
-                        className={
-                            `tools-material concrete 
-                            ${materialFilter === "concrete" ? "selected" : ""}`
-                        }
-                    >Concrete</button>
+                        onClick={() => handleFilterChange("material", null)}
+                        className="tools-material clear-filters"
+                    >   Clear filter
+                        {/* <img src={clearFilterImg} /> */}
+                    </button>
+                ) : null}
 
-                    <button
-                        onClick={() => handleFilterChange("material", "reinforced-concrete")}
-                        className={
-                            `tools-material reinforced-concrete 
-                            ${materialFilter === "reinforced-concrete" ? "selected" : ""}`
-                        }
-                    >Reinforced concrete</button>
-
-                    <button
-                        onClick={() => handleFilterChange("material", "porcelain")}
-                        className={
-                            `tools-material porcelain 
-                            ${materialFilter === "porcelain" ? "selected" : ""}`
-                        }
-                    >Porcelain</button>
-
-                    <button
-                        onClick={() => handleFilterChange("material", "masonry")}
-                        className={
-                            `tools-material masonry 
-                            ${materialFilter === "masonry" ? "selected" : ""}`
-                        }
-                    >Masonry</button>
-
-                    {materialFilter ? (
-                        <button
-                            onClick={() => handleFilterChange("material", null)}
-                            className="tools-material clear-filters"
-                        >
-                            <img src={clearFilterImg} />
-                        </button>
-                    ) : null}
-
-                </div>
+            </div>
         </>
     )
 }

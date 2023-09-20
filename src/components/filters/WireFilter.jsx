@@ -1,34 +1,62 @@
 import React from 'react'
 import clearFilterImg from '../../../src/assets/clear.png'
+import { getFilterClass, capitalizeFirstLetter } from "../../util/util.js"
 
 
-export default function WireFilter({ handleFilterChange, machineFilter, materialFilter }) {
+export default function WireFilter({ handleFilterChange, machineFilterParam, materialFilterParam }) {
+
+    // function getFilterClass(filter){
+    //     console.log(filter)
+    //     const filterClass = filter.split(' ').join('-')
+    //     console.log(filterClass)
+    // }
+
+    // function capitalizeFirstLetter(phrase){
+    //     const arr = phrase.split(' ')
+    //     const capitalizedFirstLetterArray = arr.map((word) => {
+    //         return word[0].toUpperCase() + word.slice(1)
+    //     })
+    //     const newPhrase = capitalizedFirstLetterArray.join(' ')
+    //     return newPhrase
+    // }
+
+    const machineFilterButtons = [
+        "low power", 
+        "medium power", 
+        "high power"
+    ]
+
+    const materialFilterButtons = [
+        "reinforced concrete", 
+        "concrete", 
+        "steel",
+        "masonry"
+    ]
 
     return (
         <>
             <div className="tools-list-filter-buttons-machines">
-
                 {/* FIRST ROW OF FILTER BUTTONS */}
-                    <button
-                        onClick={() => handleFilterChange("machine", "medium power")}
-                        className={
-                            `tools-machine medium-power
-                            ${machineFilter === "medium power" ? "selected" : ""}`
-                        }
-                    >Medium power</button>
-
-                    <button
-                        onClick={() => handleFilterChange("machine", "high power")}
-                        className={
-                            `tools-machine high-power
-                            ${machineFilter === "high power" ? "selected" : ""}`
-                        }
-                    >High power</button>
-                    
-
-
-
-                    {machineFilter ? (
+                <h3>Machine</h3>
+                {
+                    machineFilterButtons.map(filter => {
+                      return (
+                        <button
+                            key={filter}
+                            onClick={() => handleFilterChange("machine", filter)}
+                            className={
+                                `tools-machine 
+                                ${getFilterClass(filter)}
+                                ${machineFilterParam === filter ? "selected" : ""}`
+                            }
+                            >{capitalizeFirstLetter(filter)}
+                        </button>
+                      )
+                    })
+                }
+                
+                {/* CLEAR MACHINE FILTER */}
+                    {machineFilterParam ? (
                         <button
                             onClick={() => handleFilterChange("machine", null)}
                             className="tools-machine clear-filters"
@@ -42,40 +70,27 @@ export default function WireFilter({ handleFilterChange, machineFilter, material
                 {/* SECOND ROW OF FILTER BUTTONS */}
                 <div className="tools-list-filter-buttons-materials">
 
-                    <h3></h3>
-                    <button
-                        onClick={() => handleFilterChange("material", "concrete")}
-                        className={
-                            `tools-material concrete 
-                            ${materialFilter === "concrete" ? "selected" : ""}`
-                        }
-                    >Concrete</button>
+                    <h3>Material</h3>
 
-                    <button
-                        onClick={() => handleFilterChange("material", "reinforced concrete")}
-                        className={
-                            `tools-material reinforced-concrete 
-                            ${materialFilter === "reinforced concrete" ? "selected" : ""}`
-                        }
-                    >Reinforced concrete</button>
+                    {
+                    materialFilterButtons.map(filter => {
+                        return (
+                            <button
+                                key={filter}
+                                onClick={() => handleFilterChange("material", filter)}
+                                className={
+                                    `tools-material 
+                                    ${getFilterClass(filter)}
+                                    ${materialFilterParam === filter ? "selected" : ""}`
+                                }
+                                >{capitalizeFirstLetter(filter)}
+                            </button>
+                        )
+                        })
+                    }
 
-                    <button
-                        onClick={() => handleFilterChange("material", "steel")}
-                        className={
-                            `tools-material steel 
-                            ${materialFilter === "steel" ? "selected" : ""}`
-                        }
-                    >Steel</button>
-
-                    <button
-                        onClick={() => handleFilterChange("material", "masonry")}
-                        className={
-                            `tools-material masonry 
-                            ${materialFilter === "masonry" ? "selected" : ""}`
-                        }
-                    >Masonry</button>
-
-                    {materialFilter ? (
+                    {/* CLEAR MATERIAL FILTER */}
+                    {materialFilterParam ? (
                         <button
                             onClick={() => handleFilterChange("material", null)}
                             className="tools-material clear-filters"
