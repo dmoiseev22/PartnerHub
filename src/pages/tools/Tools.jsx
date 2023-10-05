@@ -10,9 +10,6 @@ import SegmentsFilter from "../../components/filters/SegmentsFilter"
 import GrindingFilter from "../../components/filters/GrindingFilter"
 import PrecastFilter from "../../components/filters/PrecastFilter"
 import Search from "../../components/search/Search"
-import loadingAnimation from '../../assets/loading.svg'
-
-
 
 export default function Tools() {
 
@@ -117,27 +114,16 @@ export default function Tools() {
     }
 
 
-    console.log(filteredData.length)
-    // console.log(displayedProducts)
-
     const emptyPlaceHolder = (<div className="products-placeholder"> <img src={loading} alt="" /> </div>)
 
     return (
         loading ? (
             <h3>Loading</h3>
         ) : (
-            <div>
+            <div className="container">
                 <div className="tools-list-container">
 
                     <h1>Diamond Tools Explorer</h1>
-
-                    {/* SEARCH BY ARTICLE FORM */}
-
-                    {/* <Search 
-                            handleChange={handleChange}
-                            searchInput={searchInput}
-                            handleSubmit={handleSubmit}
-                        /> */}
 
                     {/*  FILTERS AND RESULTS */}
                     <div className="tools-list-container-layout">
@@ -216,18 +202,9 @@ export default function Tools() {
                                     />
                                     : (<div className="products-placeholder"><p>No matching products found.</p></div>)}
                             </div>
-
                         </div>
-
-
                     </div>
-
-
-
-
-
                 </div>
-
             </div>
         )
     )
