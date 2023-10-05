@@ -7,7 +7,7 @@ import ProductsInCartHeading from "./ProductsInCartHeading";
 import CartFastOrder from "./CartFastOrder";
 import EmptyCart from "./EmptyCart";
 import { CartContext, sendOrderToDatabase } from "../../App";
-import trash from '../../assets/x-solid.svg'
+import trash from '../../assets/fa-icons/x-solid.svg'
 import { saveToLocalStorageCart, getDataFromLocalStorage } from "../../util/util";
 import Notice from "../../components/modal/notice";
 
@@ -163,8 +163,6 @@ export default function Cart() {
 
                         <h4 className="cart-order-total">Total: €{cartTotalToDisplay.toFixed(2)} </h4>
                         
-
-                        
                         <div>
                            <br />
                             <Link to="../../tools">
@@ -184,7 +182,6 @@ export default function Cart() {
                                         "time": time
                                     })
                                     setShowSentNotice(true)
-                                    // alert('Thank you, your request is being processed')
                                 }}
                                 className="send-button" >
                                     SEND

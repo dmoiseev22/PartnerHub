@@ -2,12 +2,13 @@ import React from "react";
 import Product from "./Product";
 import { useParams, Link, NavLink, Outlet, useLocation } from "react-router-dom"
 import { LoadingContext, PricelistContext } from "../../App"
-import heart from "../../assets/heart.svg"
 import blank from "../../assets/blades/blank.png"
 import ProductEmojis from "./ProductDots";
 import CustomButton from "../../components/buttons/CustomButton";
 import Icon from "../../components/icons/Icon";
-import file from "../../assets/file-regular.svg"
+import leftArrow from "../../assets/fa-icons/left-arrow.svg"
+import rightArrow from "../../assets/fa-icons/right-arrow.svg"
+import file from "../../assets/fa-icons/file-regular.svg"
 
 
 export default function ProductDetails() {
@@ -45,7 +46,9 @@ export default function ProductDetails() {
     const priceToDisplay = specialNetPrice || (standardPrice * discountMultiplier).toFixed(2)
     const discount = (standardPrice - priceToDisplay) / standardPrice * 100
     console.log('discount: ', discount)
-    const buttonText = isLoggedIn ? "€" + priceToDisplay : "Login"
+    
+    const specialPrice = isLoggedIn ? "€" + priceToDisplay : "Login"
+    const listPrice = isLoggedIn ? "€" + Number(product?.price2023).toFixed(2) : "Login"
 
     console.log('PICTURE', product.pictureSmall)
 
@@ -65,28 +68,34 @@ export default function ProductDetails() {
                 className="back-button"
             >&larr; <span>Back to cart</span>
             </Link> */}
-
+            
+            {/* LINKS BACK */}
+            <div className="back-buttons-container"><Link
+                    to=".."
+                    relative="path"
+                    className="back-button"
+                >
+                    <img src={leftArrow} alt=""/>
+                    <span>Go to all tools</span>
+                </Link>
+                <Link
+                    to="../../cart"
+                    relative="path"
+                    className="back-button red"
+                    ><span>Go to cart</span> 
+                    <img src={rightArrow} alt=""/>
+                </Link>
+            </div>
+            
             <div className="article-page-wrapper">
+
+                
+
+
                 <div className="article-page-main">
 
                     {/* PRODUCT CODE */}
                     <div className="product-card-details-code"><p>art.{product.code}</p></div>
-
-                    {/* LINKS BACK */}
-                    <div className="back-buttons-container"><Link
-                            to=".."
-                            relative="path"
-                            className="back-button"
-                        >&larr; <span>Back to all tools</span>
-                        </Link>
-                        <br />
-                        <Link
-                            to="../../cart"
-                            relative="path"
-                            className="back-button"
-                        >&larr; <span>Back to cart</span>
-                        </Link>
-                    </div>
 
                     {/* CONTENT */}
                     <div className="article-page-main-picture-and-icons">
@@ -130,14 +139,42 @@ export default function ProductDetails() {
                             speed={product.speed}
                         />
 
+                        {isLoggedIn && 
+                            
+                            <div className="product-card-list-prices">
+                                <p>
+                                    <span className="product-card-list-price">{listPrice}</span> 
+                                    list price 
+                                </p>
+                                <p className="red">
+                                    <span className="product-card-special-price">{specialPrice}</span> 
+                                    special price 
+                                </p>
+                            </div>
+                        }
+
                         <div className="product-card-technical-details">
                             <p className="product-card-technical-detail"><b>Alternative use</b>: {product.material.toLowerCase()} </p>
                             <p className="product-card-technical-detail"><b>Diameter: </b> {product.diameter} mm </p>
                             <p className="product-card-technical-detail"><b>Height: </b> {product.b > 0 ? `${product.height}/${product.b}` : product.height} mm </p>
                             <p className="product-card-technical-detail"><b>Width: </b> {product.thick} mm </p>
-                            <p className="product-card-technical-detail"><b>Segments: </b> {product.segments} mm </p>
+                            <p className="product-card-technical-detail"><b>Segments: </b> {product.segments} </p>
                             <p className="product-card-technical-detail"><b>Hole: </b> {product.hole} mm </p>
                         </div>
+
+                        <div className="product-card-add-button">
+                            <CustomButton
+                                className="product-card-button-primary"
+                                purpose="primary"
+                                size="big"
+                                productCode={product.code}
+                            >
+                               {/* ADD TO CART: {specialPrice} */}
+                               ADD TO CART
+                            </CustomButton>
+                        </div>
+                        
+
                     </div>
                 </div>
             </div>
@@ -154,10 +191,10 @@ export default function ProductDetails() {
                 <div className="article-page-secondary">
                         <h3>Files</h3>
                         <div className="files">
-                            <p className="article-page-product-description"><img style={{height: "1.5rem", margin: "0 0.5rem"}} src={file} alt="Catalogue" />
+                            <p className="article-page-product-files"><img style={{height: "1.5rem", margin: "0 0.5rem"}} src={file} alt="Catalogue" />
                             <a href={product.catalogue} target="_blank"><b>Tech File</b></a>
                             </p>
-                            <p className="article-page-product-description"><img style={{height: "1.5rem", margin: "0 0.5rem"}} src={file} alt="Catalogue" />
+                            <p className="article-page-product-files"><img style={{height: "1.5rem", margin: "0 0.5rem"}} src={file} alt="Catalogue" />
                             <a href={product.catalogue} target="_blank"><b>Catalogue</b></a>
                             </p>
                         </div>
@@ -167,17 +204,18 @@ export default function ProductDetails() {
 
             <div className="article-page-wrapper">
                 <div className="article-page-secondary">
-                        <h3>Price</h3>
-                        <p className="article-page-list-price"><b>List Price: </b>{isLoggedIn ? "€" + Number(product?.price2023).toFixed(2): "Login"}</p>
+                        <h3>Discount</h3>
+                        {/* <p className="article-page-list-price"><b>List Price: </b>{isLoggedIn ? "€" + Number(product?.price2023).toFixed(2): "Login"}</p>
                         <br />
-                        <p className="article-page-special-price"><b>Special Price: </b>{buttonText}</p>
-                        <br />
-                        <p className="article-page-special-price"><b>Special Discount :</b> {isLoggedIn ? `${discount.toFixed(0)} %` : buttonText}</p>
+                        <p className="article-page-special-price"><b>Special Price: </b>{specialPrice}</p>
+                        <br /> */}
+                        <p className="article-page-special-price"><b>Special Discount:</b> {isLoggedIn ? `${discount.toFixed(0)}% applied` : "Login required"}</p>
+                        {/* <p className="article-page-special-price"><b>Conditions:</b> {isLoggedIn ? `${discount.toFixed(0)}% applied` : "Login required"}</p> */}
 
 
                 </div>
             </div>
-
+{/* 
             <div className="article-page-wrapper">
                 <div className="article-page-button">
                     <CustomButton
@@ -186,10 +224,10 @@ export default function ProductDetails() {
                         size="big"
                         productCode={product.code}
                     >
-                        Add to Cart: {buttonText}
+                        Add to Cart: {specialPrice}
                     </CustomButton>
                 </div>
-            </div>
+            </div> */}
 
 
 

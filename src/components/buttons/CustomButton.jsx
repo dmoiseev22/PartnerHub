@@ -42,14 +42,15 @@ export default function CustomButton({ children, purpose, size, className, produ
 
     const style = { 
         border:
-            purpose === "primary" ? "1px solid  #ef1c1cd6" : "none",
+            purpose === "primary" ? "1px solid  rgb(195, 19, 19)" : "none",
         borderRadius: "20px",
         padding: size === "big" ? ".5rem 1rem" : ".3rem .5rem",
         backgroundColor:
-            purpose === "primary" ? "#ef1c1cd6" : "transparent",
+            purpose === "primary" ? "rgb(195, 19, 19)" : "transparent",
         color: purpose === "primary" ? "white" : "inherit",
         letterSpacing: "1px",
         transition: "all .2s ease-in-out",
+        minWidth: "120px"
     }
 
     const styleInCart = {
@@ -61,6 +62,7 @@ export default function CustomButton({ children, purpose, size, className, produ
         color: purpose === "primary" ? "white" : "inherit",
         letterSpacing: "1px",
         transition: "all .2s ease-in-out",
+        minWidth: "120px"
     }
 
 
@@ -73,7 +75,7 @@ export default function CustomButton({ children, purpose, size, className, produ
             style={(inCart && purpose === "primary") ? styleInCart : style}
             onClick={isLoggedIn ? handleClick : () => navigate("/login", { state: {"from": location.pathname} })}
             id={productCode}>
-            {(inCart && purpose === "primary") ? "Added" : children}
+            {(inCart && purpose === "primary") ? "ADDED" : children}
 
         </button>
     )

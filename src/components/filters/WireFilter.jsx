@@ -1,5 +1,4 @@
 import React from 'react'
-import clearFilterImg from '../../../src/assets/clear.png'
 import { getFilterClass, capitalizeFirstLetter } from "../../util/util.js"
 
 
@@ -61,7 +60,7 @@ export default function WireFilter({ handleFilterChange, machineFilterParam, mat
                             onClick={() => handleFilterChange("machine", null)}
                             className="tools-machine clear-filters"
                         >
-                            <img src={clearFilterImg} />
+                            Clear filter
                         </button>
                     ) : null}
 

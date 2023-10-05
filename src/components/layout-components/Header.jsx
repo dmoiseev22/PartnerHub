@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { CartContext } from "../../App"
 import { Turn as Hamburger } from 'hamburger-react'
-import companyLogo from "../../assets/logo.png"
+import companyLogo from "../../assets/img/logo.png"
 
 
 export default function Header() {
@@ -35,8 +35,6 @@ export default function Header() {
     }, []);
 
     const activeStyles = {
-        // textDecoration: "underline",
-        // color: "#fff"
         backgroundColor: "#fff"
     }
 
@@ -52,7 +50,6 @@ export default function Header() {
                             <img src={companyLogo} alt="company logo" />
                         </Link>
                     </div>
-                    {/* <FaRegUserCircle size="1.5em" /> */}
                     {/* CLICKING HUMBURGER TOGGLES OPEN/CLOSE MENU  */}
                     {isHamburgerVisible &&
                         (<Hamburger
@@ -102,6 +99,7 @@ export default function Header() {
                                     {isLoggedIn && (quantityOfItemsInCart > 0) && quantityOfItemsInCart}
                                 </span>
                             </NavLink>
+
                             {/* <NavLink 
                                 className="navbar-link"
                                 to="feedback" 

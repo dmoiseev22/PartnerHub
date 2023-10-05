@@ -25,7 +25,7 @@ export default function Footer() {
     
     return (
         <footer className="footer">
-            <p className="footer-text">All rights reserved. 2023</p>
+            <p className="footer-text">2023</p>
 
             {!cookiesConsentAccepted && isModalOpen ? <Modal closeModal={closeModal}/> : null}            
 

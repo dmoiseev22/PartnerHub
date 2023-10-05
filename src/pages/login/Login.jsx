@@ -2,7 +2,6 @@ import React from "react";
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, push, onValue } from "firebase/database" 
 import { useLocation, useNavigate } from "react-router-dom"
-import CustomButton from "../../components/buttons/CustomButton";
 
 export default function Login() {
     const [input, setInput] = React.useState("")

@@ -3,38 +3,36 @@ import { NavLink, Outlet } from 'react-router-dom'
 
 export default function Promos() {
 
-
-
     return (
         <div className="promos-wrapper">
             <div className="promos-selection">
 
                 <h3>Promotions</h3>
-                <p>Get to know the latest factory promotions, as well as your exclusive offers</p>
+                <p>Get to know the latest factory promotions and your exclusive offers</p>
 
                 <div className="promos-selectors">
+
                     <NavLink 
                         to=""
-                        style={({ isActive })=>{ return (isActive) ? {backgroundColor: "rgb(234, 162, 162)"} : null}}
+                        style={({ isActive })=>{ return (isActive) ? {backgroundColor: "#b81b1b", borderRadius: "25px", color: "#fff"} : null}}
+                        className="promos-selectors-btn"
                         end
                     >
-                        <div className="promos-selectors-btn">
-                            <p>General </p>
-                        </div>
+                            GENERAL 
                     </NavLink>
 
                     <NavLink 
-                    style={({ isActive })=>{ return (isActive) ? {backgroundColor: "rgb(234, 162, 162)"} : null}}
+                    style={({ isActive })=>{ return (isActive) ? {backgroundColor: "#b81b1b", borderRadius: "25px", color: "#fff"} : null}}
                         to="./recommended"
+                        className="promos-selectors-btn"
                     >
-                        <div className="promos-selectors-btn">
-                            <p>Exclusive</p> 
-                        </div>
+                            EXCLUSIVE
                     </NavLink>
                 </div>
             </div>
 
             <Outlet />
+
         </div>
     )
 }

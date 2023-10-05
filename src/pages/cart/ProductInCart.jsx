@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from 'react-router-dom'
-import trash from '../../assets/x-solid.svg'
+import trash from '../../assets/fa-icons/x-solid.svg'
 import Badge from "../../components/badge/Badge";
 
 

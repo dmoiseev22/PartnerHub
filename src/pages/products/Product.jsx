@@ -1,6 +1,5 @@
 import React from "react";
 import { Navigate, Link } from "react-router-dom"
-import heart from "../../assets/heart.svg"
 import CustomButton from "../../components/buttons/CustomButton"
 import blank from "../../assets/blades/blank.png"
 import ProductEmojis from "./ProductDots";
@@ -47,9 +46,6 @@ export default function Product( {product, isLoggedIn} ) {
 
                 <div className="product-card-top">
                     <div><p>art: {product.code}</p></div>
-                    {/* <div onClick={console.log('clicked heart')} id="product.code">
-                        <img src={heart}/>
-                    </div> */}
                 </div>
 
                 <Link to={`/tools/${product.code}`}>
@@ -105,15 +101,18 @@ export default function Product( {product, isLoggedIn} ) {
                             
                         </div>
                         <div className="product-card-buttons">
+
+
+                            <Link className="product-card-details-link" to={`/tools/${product.code}`}>Details</Link>
                             
-                            <CustomButton 
+                            {/* <CustomButton 
                                 className="product-card-button-secondary"
                                 purpose="secondary"
                                 size="normal"
                                 productCode={product.code}
                             >
                                     <Link to={`/tools/${product.code}`}>Details</Link>
-                            </CustomButton>
+                            </CustomButton> */}
                             
                             <CustomButton
                                 className="product-card-button-primary"   

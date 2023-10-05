@@ -1,5 +1,4 @@
 import React from 'react'
-import clearFilterImg from '../../../src/assets/clear.png'
 import { getFilterClass, capitalizeFirstLetter } from "../../util/util.js"
 
 export default function GrindingFilter({ handleFilterChange, machineFilterParam, materialFilterParam }) {
@@ -10,7 +9,7 @@ export default function GrindingFilter({ handleFilterChange, machineFilterParam,
 
     const materialFilterButtons = [
         "concrete", 
-        "bricks"
+        "masonry"
     ]
 
 

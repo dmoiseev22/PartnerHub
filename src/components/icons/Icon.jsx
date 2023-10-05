@@ -20,6 +20,16 @@ import broca from '../../assets/product-icons/iconos_producto_sueltos_broca ente
 import wire from '../../assets/product-icons/iconos_producto_sueltos_hilo 1.svg'
 import precast from '../../assets/product-icons/iconos_producto_sueltos_prefabricados 3.svg'
 
+import language from '../../assets/fa-icons/language.png'
+import diamond from '../../assets/fa-icons/diamond.png'
+import fast from '../../assets/fa-icons/fast.png'
+import network from '../../assets/fa-icons/global-network.png'
+import scientist from '../../assets/fa-icons/scientist.png'
+import spain from '../../assets/fa-icons/spain.png'
+import team from '../../assets/fa-icons/team.png'
+import iso from '../../assets/fa-icons/iso.png'
+
+
 
 
 import low_power from '../../assets/product-icons/iconos_producto_sueltos_Baja potencia.svg'
@@ -55,7 +65,16 @@ const icons = {
     "WIRE": wire,
     "precast machine": precast,
     "drilling machine > 2.4kw": drilling_machine_high_power,
-    "drilling machine < 2.4kw": drilling_machine
+    "drilling machine < 2.4kw": drilling_machine,
+
+    language,
+    diamond,
+    fast,
+    network,
+    scientist, 
+    spain,
+    team,
+    iso
 }
 
 export default function Icon({ i }) {
@@ -64,15 +83,9 @@ export default function Icon({ i }) {
 
     const iArray = i.split(', ')
 
-    // const style = {
-    //     width: "40px",
-    //     margin: "4px"
-    // }
-
     return (
         <div >
             {
-                // iArray.map((iconName, index) => (<img key={index} style={style} src={icons[iconName]} alt={icons[iconName]} />))
                 iArray.map((iconName, index) => (<img key={index} src={icons[iconName]} alt={icons[iconName]} />)) 
 
             }
@@ -81,4 +94,4 @@ export default function Icon({ i }) {
     
  }
 
-
+export { icons }
