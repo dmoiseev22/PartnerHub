@@ -1,4 +1,4 @@
-TRADEHUB
+TradeHub
 
 TECH STACK:
 
@@ -34,15 +34,10 @@ For Authorized Users (Distributors/Importers)
 3. Order Management: Facilitates adding items to the cart, creating orders (both standard and recommended products), and sending orders to the company.
 
 CONTRIBUTING
-We welcome contributions from the community. If you'd like to contribute to the CIS Partners App, please follow our Contribution Guidelines.
+We welcome contributions from the community. If you'd like to contribute to the TradeHub, please follow our Contribution Guidelines.
 
 LICENSE
 This project is licensed under the MIT License.
-
-CONTACT
-For questions or inquiries, please contact Your Name.
-
-
 
 
 
