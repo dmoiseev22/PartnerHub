@@ -3,7 +3,7 @@
 TECH STACK:
 
     React
-    JavaScript (JS)
+    JavaScript
     HTML
     CSS
     Firebase
