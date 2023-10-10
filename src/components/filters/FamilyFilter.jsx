@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function FamilyFilter({ handleFilterChange, familyFilterParam, clearFilters }) {
 
-    console.log("familyFilterParam: ", familyFilterParam)
 
     return (
         <div className="tools-list-filter-buttons-family">

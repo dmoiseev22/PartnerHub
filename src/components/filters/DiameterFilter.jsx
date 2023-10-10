@@ -3,9 +3,7 @@ import React from "react"
 export default function DiameterFilter({ diameterArr, handleFilterChange }) {
 
     const [diameterFilter, setDiameterFilter] = React.useState()
-    console.log('diameterFilter', diameterFilter)
-
-
+    
     React.useEffect(()=>{
         setDiameterFilter()
     }, [diameterArr])

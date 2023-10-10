@@ -36,7 +36,6 @@ export default function DiscsFilters({ handleFilterChange, machineFilterParam, m
                         machineFilterButtons.map(filter => {
                             const filterClass = getFilterClass(filter)
                             const filterName = capitalizeFirstLetter(filter)
-                            console.log('filter', filter)
                             return (
                                 <button
                                     key={filter}

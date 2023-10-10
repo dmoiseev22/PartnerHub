@@ -53,7 +53,7 @@ export default function Products({ filteredData, isLoggedIn }){
     const productsToRender = filteredDataByDiameter ? filteredDataByDiameter : filteredData
     const productsToRenderSortedByPrice = productsToRender.sort((product1, product2) => product1.price2023 - product2.price2023)
 
-    console.log(productsToRender)
+    // console.log(productsToRender)
 
     return (
         <div className='product-list container'>

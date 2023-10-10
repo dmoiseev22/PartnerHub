@@ -21,7 +21,6 @@ export default function Header() {
     React.useEffect(() => {
         const handleResize = (e) => {
             const newWindowWidth = e.target.innerWidth
-            console.log("newWindowWidth: ", newWindowWidth)
             setWindowSize(newWindowWidth)
             setIsHamburgerVisible(newWindowWidth < 500)
         }

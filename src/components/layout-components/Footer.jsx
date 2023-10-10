@@ -6,8 +6,6 @@ export default function Footer() {
 
     const [isModalOpen, setModalOpen] = React.useState(false)
     let cookiesConsentAccepted = JSON.parse(window.localStorage.getItem('sd-cookies-accepted')) || false
-
-    console.log('cookiesConsentAccepted: ', cookiesConsentAccepted)
     
     function closeModal(){
         setModalOpen(false)
