@@ -9,7 +9,7 @@ import EmptyCart from "./EmptyCart";
 import { CartContext, sendOrderToDatabase } from "../../App";
 import trash from '../../assets/fa-icons/x-solid.svg'
 import { saveToLocalStorageCart, getDataFromLocalStorage } from "../../util/util";
-import Notice from "../../components/modal/notice";
+import Notice from "../../components/modal/Notice";
 
 export default function Cart() {
 
