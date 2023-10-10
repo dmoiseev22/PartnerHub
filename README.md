@@ -1,9 +1,9 @@
-***** TradeHub *****
+***** PartnerHub *****
 
 TECH STACK:
 
     React
-    JavaScript (JS)
+    JavaScript
     HTML
     CSS
     Firebase
@@ -32,12 +32,3 @@ For Authorized Users (Distributors/Importers)
 1. Virtual Product Catalog: Provides authorized users with client-specific prices.
 2. Promotions Management: Allows for the management of general promotions and unique, user-specific promotions.
 3. Order Management: Facilitates adding items to the cart, creating orders (both standard and recommended products), and sending orders to the company.
-
-CONTRIBUTING
-We welcome contributions from the community. If you'd like to contribute to the TradeHub, please follow our Contribution Guidelines.
-
-LICENSE
-This project is licensed under the MIT License.
-
-
-
