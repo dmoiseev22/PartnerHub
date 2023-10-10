@@ -60,6 +60,7 @@ export default function Product( {product, isLoggedIn} ) {
                                     <img
                                     loading="lazy"
                                     src={product.pictureSmall}
+                                    alt="tool image"
                                     // src={blank} 
                                     />         
                                 </Link>           
