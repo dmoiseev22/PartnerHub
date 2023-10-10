@@ -69,7 +69,7 @@ export default function Products({ filteredData, isLoggedIn }){
 
                 {/* FILTERED RESULTS */}
                 {/* DISPLAY ONLY FIRST 25 RESULTS FOR PAGELOAD OPTIMISATION */}
-                {productsToRenderSortedByPrice.slice(0,25).map((product) => {
+                {productsToRenderSortedByPrice.slice(0, 25).map((product) => {
                     return <Product 
                             key={product.code + "product-card"}
                             product={product}
