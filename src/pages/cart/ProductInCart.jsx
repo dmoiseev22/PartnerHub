@@ -4,7 +4,7 @@ import trash from '../../assets/fa-icons/x-solid.svg'
 import Badge from "../../components/badge/Badge";
 
 
-export default function ProductInCart({ quantity, product, userData, order, updateQuantity, removeItem, setCartTotal }) {
+export default function ProductInCart({ quantity, product, userData, updateQuantity, removeItem, setCartTotal }) {
 
 
     const [inputQuantityValue, setInputQuantityValue] = React.useState(quantity)
@@ -39,9 +39,10 @@ export default function ProductInCart({ quantity, product, userData, order, upda
     console.log("itemTotalValue: ", itemTotalValue)
 
     function handleChange(event) {
-        setInputQuantityValue(event.target.value)
-        console.log(code, event.target.value)
-        updateQuantity(code, event.target.value)
+        // MAXIMUM INPUT 9999 UNITS
+        const newValue = Math.min(9999, Math.max(event.target.value))
+        setInputQuantityValue(newValue)
+        updateQuantity(code, newValue)
     }
 
     function handleSubmit(e) {
@@ -77,6 +78,7 @@ export default function ProductInCart({ quantity, product, userData, order, upda
                 <input
                     name={code}
                     type="number"
+                    max="9999"
                     className="cart-product-input"
                     value={inputQuantityValue}
                     onChange={handleChange}

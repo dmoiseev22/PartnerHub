@@ -13,9 +13,6 @@ import Search from "../../components/search/Search"
 
 export default function Tools() {
 
-    console.log('TOOLS COMPONENT RENDERS')
-
-
     const pricelist = React.useContext(PricelistContext)
     const loading = React.useContext(LoadingContext)
     const [searchInput, setSearchInput] = React.useState("")
@@ -105,16 +102,14 @@ export default function Tools() {
     }
 
     function searchProduct(input) {
-        console.log('searchProduct function starts')
         let filteredResult = pricelist.filter((product) => {
             return product.code.startsWith(input)
         })
         setFilteredData(filteredResult)
-        console.log('searchProduct function ends')
     }
 
 
-    const emptyPlaceHolder = (<div className="products-placeholder"> <img src={loading} alt="" /> </div>)
+    // const emptyPlaceHolder = (<div className="products-placeholder"> <img src={loading} alt="" /> </div>)
 
     return (
         loading ? (
