@@ -59,7 +59,7 @@ export default function App() {
     onValue(onlinePriceListDb, function (snapshot) {
       let priceListArray = Object.values(snapshot.val())
       setPricelist(priceListArray)
-      console.log(priceListArray)
+      // console.log(priceListArray)
     })
     setLoading(false)
   }, [])
