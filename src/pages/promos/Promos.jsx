@@ -16,6 +16,7 @@ export default function Promos() {
                         to=""
                         style={({ isActive })=>{ return (isActive) ? {backgroundColor: "#b81b1b", borderRadius: "25px", color: "#fff"} : null}}
                         className="promos-selectors-btn"
+                        aria-label="show general promos"
                         end
                     >
                             GENERAL 
@@ -25,6 +26,7 @@ export default function Promos() {
                     style={({ isActive })=>{ return (isActive) ? {backgroundColor: "#b81b1b", borderRadius: "25px", color: "#fff"} : null}}
                         to="./recommended"
                         className="promos-selectors-btn"
+                        aria-label="show recommended promos"
                     >
                             EXCLUSIVE
                     </NavLink>
