@@ -23,7 +23,7 @@ import precast from '../../assets/product-icons/iconos_producto_sueltos_prefabri
 
 import low_power from '../../assets/product-icons/iconos_producto_sueltos_Baja potencia.svg'
 import medium_power from '../../assets/product-icons/iconos_producto_sueltos_Media potencia.svg'
-import high_power from '../../assets/product-icons/iconos_producto_sueltos_alta potencia.svg'
+import high_power from '../../assets/product-icons/iconos_producto_sueltos_Alta potencia.svg'
 
 // HOME PAGE RELATED ICONS
 import language from '../../assets/fa-icons/language.png'
