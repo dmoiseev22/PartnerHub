@@ -13,7 +13,8 @@ export default function EmptyCart({ addUsualProducts, addRecommendedProducts }) 
 
                 <Link to="../../tools">
                 <button
-                    className="login-button" >
+                    className="login-button" 
+                    aria-label="explore tools">
                     EXPLORE 
                 </button>
                 </Link>

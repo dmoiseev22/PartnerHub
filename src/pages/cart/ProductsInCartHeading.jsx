@@ -19,7 +19,7 @@ export default function ProductsInCartHeading({ clearCart, trash }) {
             <div  
                 className="cart-product-remove table-heading"
                 onClick={clearCart}
-            ><img src={trash}/>
+            ><img src={trash} alt="remove all items from the cart"/>
             </div>
         </div>
     )

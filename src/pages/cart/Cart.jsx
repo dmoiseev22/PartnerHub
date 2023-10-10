@@ -167,12 +167,14 @@ export default function Cart() {
                            <br />
                             <Link to="../../tools">
                                 <button
-                                    className="explore-button" >
+                                    className="explore-button"
+                                    aria-label="explore tools button" >
                                     EXPLORE MORE
                                 </button>
                             </Link>
 
                             <button
+                                aria-label="send order button"
                                 onClick={()=>{
                                     const dateObject = new Date().toLocaleString()
                                     const time = dateObject.toLocaleString(dateObject)

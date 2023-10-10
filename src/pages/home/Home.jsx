@@ -21,7 +21,8 @@ export default function Home() {
                 <h1>WELCOME TO CIS PARTNER HUB</h1>
                 <Link to="/tools">
                     <button
-                        className="home-explore-button" >
+                        className="home-explore-button"
+                        aria-label="explore tools button" >
                         EXPLORE DIAMOND TOOLS
                     </button>
                 </Link>
@@ -69,7 +70,8 @@ export default function Home() {
 
                     <Link to="/tools">
                     <button
-                        className="home-button red-btn" >
+                        className="home-button red-btn" 
+                        aria-label="explore tools button">
                         EXPLORE
                     </button>
                     </Link>
@@ -85,9 +87,10 @@ export default function Home() {
                     <p>Explore latest promotions and tailor-made recommendations for your business</p>
                     <p> <span style={{color: "red", fontSize: '12px'}}> Login required</span></p>
 
-                    <Link to="promos">
+                    <Link to="promos" >
                     <button
-                        className="home-button red-btn" >
+                        className="home-button red-btn" 
+                        aria-label="explore promotions button">
                         PROMOTIONS
                     </button>
                     </Link>
@@ -106,7 +109,8 @@ export default function Home() {
 
                     <Link to="cart">
                     <button
-                        className="home-button red-btn" >
+                        className="home-button red-btn"
+                        aria-label="start order button" >
                         START YOUR ORDER
                     </button>
                     </Link>

@@ -193,10 +193,10 @@ export default function ProductDetails() {
                         <h3>Files</h3>
                         <div className="files">
                             <p className="article-page-product-files"><img style={{height: "1.5rem", margin: "0 0.5rem"}} src={file} alt="Catalogue" />
-                            <a href={product.catalogue} target="_blank"><b>Tech File</b></a>
+                            <a href={product.catalogue} target="_blank" aria-label="tech-file"><b>Tech File</b></a>
                             </p>
                             <p className="article-page-product-files"><img style={{height: "1.5rem", margin: "0 0.5rem"}} src={file} alt="Catalogue" />
-                            <a href={product.catalogue} target="_blank"><b>Catalogue</b></a>
+                            <a href={product.catalogue} target="_blank" aria-label="catalogue"><b>Catalogue</b></a>
                             </p>
                         </div>
 

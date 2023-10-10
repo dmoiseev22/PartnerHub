@@ -25,14 +25,16 @@ export default function CartFastOrder({ addUsualProducts, addRecommendedProducts
             <div className="cart-order-add-options">
                 <button
                     onClick={addUsualProducts}
-                    className="add-to-cart-btn" >
+                    className="add-to-cart-btn" 
+                    aria-label="add usual products to cart">
                         USUAL 
                 </button>
 
 
                 <button
                     onClick={addRecommendedProducts}
-                    className="add-to-cart-btn" >
+                    className="add-to-cart-btn" 
+                    aria-label="add recommended products to cart">
                         RECOMMENDED
                 </button>
 

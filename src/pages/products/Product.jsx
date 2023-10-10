@@ -56,7 +56,7 @@ export default function Product( {product, isLoggedIn} ) {
 
                     <div className="product-card-details-primary">
                         <div className="product-card-image">
-                                <Link to={`/tools/${product.code}`}>
+                                <Link to={`/tools/${product.code}`} aria-label="link to product description">
                                     <img
                                     loading="lazy"
                                     src={product.pictureSmall}
@@ -104,7 +104,12 @@ export default function Product( {product, isLoggedIn} ) {
                         <div className="product-card-buttons">
 
 
-                            <Link className="product-card-details-link" to={`/tools/${product.code}`}>Details</Link>
+                            <Link 
+                                className="product-card-details-link" 
+                                to={`/tools/${product.code}`} 
+                                aria-label="link to product description">
+                                    Details
+                            </Link>
                             
                             {/* <CustomButton 
                                 className="product-card-button-secondary"

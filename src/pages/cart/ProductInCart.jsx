@@ -60,7 +60,8 @@ export default function ProductInCart({ quantity, product, userData, updateQuant
                 state={{
                     message: "Cart",
                     from: location.pathname
-                }} >
+                }} 
+                aria-label="product details">
                 <p
                     className="cart-product-code"
                     style={{ textDecoration: "underline" }}>
@@ -85,7 +86,7 @@ export default function ProductInCart({ quantity, product, userData, updateQuant
                 id={code}
                 className="cart-product-remove"
                 onClick={(e) => removeItem(e.target.id)}
-            ><img id={code} src={trash} />
+            ><img id={code} src={trash} alt="remove from the cart" />
             </div>
         </div>
     )
