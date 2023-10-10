@@ -11,12 +11,7 @@ import pulidoIcon from '../../../src/assets/product-range-icons/pulido.png'
 import juntasIcon from '../../../src/assets/product-range-icons/juntas.png'
 import wetcutIcon from '../../../src/assets/product-range-icons/wetcut.png'
 import brocaIcon from '../../../src/assets/product-range-icons/broca.png'
-
 import { icons } from "../../components/icons/Icon"
-
-
-
-
 
 export default function Home() {
     

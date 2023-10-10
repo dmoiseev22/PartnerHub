@@ -94,7 +94,7 @@ export default function WireFilter({ handleFilterChange, machineFilterParam, mat
                             onClick={() => handleFilterChange("material", null)}
                             className="tools-material clear-filters"
                         >
-                            <img src={clearFilterImg} />
+                            Clear filter
                         </button>
                     ) : null}
 
