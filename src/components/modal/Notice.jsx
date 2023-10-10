@@ -6,7 +6,7 @@ export default function Notice({ closeModal }) {
     return(
             <div className="modal sent-confirmation">
                 
-                <h3>We received your request!</h3>
+                <h2>We received your request!</h2>
                 <p>You personal manager will contact you soon. </p>
 
                 <div className="modal-butons">
