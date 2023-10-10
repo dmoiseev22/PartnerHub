@@ -70,7 +70,7 @@ export default function Products({ filteredData, isLoggedIn }){
                 {/* FILTERED RESULTS */}
                 {productsToRenderSortedByPrice.map((product) => {
                     return <Product 
-                            key={product.code}
+                            key={product.code + "product-card"}
                             product={product}
                             isLoggedIn={isLoggedIn}
                             />

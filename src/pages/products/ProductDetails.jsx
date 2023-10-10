@@ -75,7 +75,7 @@ export default function ProductDetails() {
                     relative="path"
                     className="back-button"
                 >
-                    <img src={leftArrow} alt=""/>
+                    <img src={leftArrow} alt="go to tools link"/>
                     <span>Go to all tools</span>
                 </Link>
                 <Link
@@ -83,7 +83,7 @@ export default function ProductDetails() {
                     relative="path"
                     className="back-button red"
                     ><span>Go to cart</span> 
-                    <img src={rightArrow} alt=""/>
+                    <img src={rightArrow} alt="go to cart link"/>
                 </Link>
             </div>
             
@@ -106,6 +106,7 @@ export default function ProductDetails() {
                             <img
                                 loading="lazy"
                                 src={product.pictureBig || blank}
+                                alt="tool image full-size"
                             />
                             <div className="article-label">
                                 <p>{product.quality}</p>

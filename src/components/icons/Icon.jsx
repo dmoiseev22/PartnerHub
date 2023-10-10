@@ -84,7 +84,7 @@ export default function Icon({ i }) {
     return (
         <div >
             {
-                iArray.map((iconName, index) => (<img key={index} src={icons[iconName]} alt={icons[iconName]} />)) 
+                iArray.map((iconName, index) => (<img key={index} src={icons[iconName]} alt={iconName} />)) 
 
             }
         </div>

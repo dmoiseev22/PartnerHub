@@ -74,7 +74,7 @@ export default function CustomButton({ children, purpose, size, className, produ
             className={className}
             style={(inCart && purpose === "primary") ? styleInCart : style}
             onClick={isLoggedIn ? handleClick : () => navigate("/login", { state: {"from": location.pathname} })}
-            id={productCode}>
+            id={productCode  + "add to cart button"}>
             {(inCart && purpose === "primary") ? "ADDED" : children}
 
         </button>
