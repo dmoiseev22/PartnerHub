@@ -27,7 +27,6 @@ export default function ProductInCart({ quantity, product, userData, updateQuant
     // UPDATE ITEM TOTAL AND CART TOTAL IF USER CHANGES INPUT QUANTITIES
     React.useEffect(() => {
         setItemTotalValue(total)
-        console.log('component rerendered')
         setCartTotal((prev) => {
             return {
                 ...prev,
@@ -35,8 +34,6 @@ export default function ProductInCart({ quantity, product, userData, updateQuant
             }
         })
     }, [inputQuantityValue])
-
-    console.log("itemTotalValue: ", itemTotalValue)
 
     function handleChange(event) {
         // MAXIMUM INPUT 9999 UNITS
@@ -74,7 +71,6 @@ export default function ProductInCart({ quantity, product, userData, updateQuant
             <p className="cart-product-listprice">{listPrice.toFixed(2)}</p>
             <p className="cart-product-finalprice">{finalPrice.toFixed(2)}</p>
             <form onSubmit={handleSubmit} className="cart-product-input-form">
-                {/* <label type="text" htmlFor={code}></label> */}
                 <input
                     name={code}
                     type="number"
@@ -84,7 +80,6 @@ export default function ProductInCart({ quantity, product, userData, updateQuant
                     onChange={handleChange}
                 />
             </form>
-            {/* <p className="cart-product-quantity">{quantity}</p> */}
             <p className="cart-product-total">{total.toFixed(2)}</p>
             <div
                 id={code}
