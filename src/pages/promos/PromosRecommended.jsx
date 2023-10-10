@@ -17,7 +17,6 @@ export default function PromosRecommended() {
             const productToDisplay = pricelist.find((product) => product.code === codeRecommended)
             if (productToDisplay !== undefined) {
                 setProductsToDisplay((prev)=>{
-                    console.log("prev: ", prev)
                     return [
                         ...prev,
                         productToDisplay

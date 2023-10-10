@@ -29,7 +29,6 @@ export default function Login() {
           };
         
         if (clientId) {
-            console.log('app initialize start')
             const app = initializeApp(firebaseConfig)
             const database = getDatabase(app)
             const clientDatabase = ref(database, `clients/` + clientId)
@@ -45,7 +44,6 @@ export default function Login() {
                     localStorage.setItem("loggedin", true)
                     setIsLoggedIn(true)
                     returnToPrevPage()
-                    // navigate(from, { replace: true })
                 } else {console.log("unsuccessfull login intent")}
             })
         }
@@ -56,8 +54,6 @@ export default function Login() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        const { value } = e.target
-        console.log("value:" + value)
         
         if (isLoggedIn) {
             window.localStorage.removeItem("partners-app-local-storage")
@@ -78,11 +74,11 @@ export default function Login() {
         const curHr = today.getHours()
         
         if (curHr < 12) {
-          return `Good morning ${name}`
+          return `Good morning, ${name}`
         } else if (curHr < 18) {
-          return `Good afternoon ${name}`
+          return `Good afternoon, ${name}`
         } else {
-          return `Good evening ${name}`
+          return `Good evening, ${name}`
         }
     }
 
@@ -123,18 +119,11 @@ export default function Login() {
                 />
 
                 <button
-                    className="login-button" >
+                    className="login-button" 
+                    aria-label="login button">
                     {(!isLoggedIn) ? "LOG IN" : "LOG OUT" }
 
                 </button>
-                    {/* <CustomButton
-                        purpose="primary"
-                        size="big"
-                        className="login-button"    
-                    > 
-                        {(!isLoggedIn) ? "Log in" : "Log out" }
-                    </CustomButton>  */}
-
                 
             </form>
         </div>
