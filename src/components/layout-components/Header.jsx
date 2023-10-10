@@ -74,19 +74,19 @@ export default function Header() {
                             </NavLink>
                             <NavLink
                                 className="navbar-link"
-                                to="promos"
-                                style={({ isActive }) => isActive ? activeStyles : null}
-                                onClick={() => setOpen(!isOpen)}
-                            >
-                                Promos
-                            </NavLink>
-                            <NavLink
-                                className="navbar-link"
                                 to="tools"
                                 style={({ isActive }) => isActive ? activeStyles : null}
                                 onClick={() => setOpen(!isOpen)}
                             >
                                 Tools
+                            </NavLink>
+                            <NavLink
+                                className="navbar-link"
+                                to="promos"
+                                style={({ isActive }) => isActive ? activeStyles : null}
+                                onClick={() => setOpen(!isOpen)}
+                            >
+                                Promos
                             </NavLink>
                             <NavLink
                                 className="navbar-link"
