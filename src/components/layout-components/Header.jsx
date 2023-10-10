@@ -55,6 +55,7 @@ export default function Header() {
                             toggled={isOpen}
                             toggle={setOpen}
                             size={20}
+                            aria-label="open/close menu button"
                         />)
                     }
 
