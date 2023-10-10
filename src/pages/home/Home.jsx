@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from 'react-router-dom'
-// import backgroundImg from '../../../src/assets/img/home-background-tiles.jpeg'
 import backgroundImg from '../../../src/assets/img/background-mural.jpg'
 
 import drycutIcon from '../../../src/assets/product-range-icons/drycut.png'
@@ -30,7 +29,8 @@ export default function Home() {
             
             <div className="home-page-about-section">
                 <h3>ABOUT </h3>
-                <p>Solga Diamant, established in 1958 in Barcelona, stands as a distinguished global leader in the diamond tools manufacturing industry. With a rich history spanning over six decades, we have been dedicated to serving customers in more than 60 countries, consistently delivering top-tier products and expertise to the construction and stone sectors worldwide. </p>
+                <p>Solga Diamant was established in 1958 in Barcelona, stands as a distinguished global leader in the diamond tools manufacturing industry. 
+                    With a rich history spanning over six decades, Solga has been serving customers in more than 60 countries, consistently delivering top-tier products and expertise to the construction and stone sectors worldwide. </p>
                     <div className="home-about-inner-container">
                     <div className="home-about-left">
                         <ul>
@@ -82,7 +82,7 @@ export default function Home() {
                 <h3>Promotions</h3>
 
                 <div className="home-page-range-inner">
-                    <p>Explore our latest promotions and tailor-made recommendations for your business</p>
+                    <p>Explore latest promotions and tailor-made recommendations for your business</p>
                     <p> <span style={{color: "red", fontSize: '12px'}}> Login required</span></p>
 
                     <Link to="promos">
