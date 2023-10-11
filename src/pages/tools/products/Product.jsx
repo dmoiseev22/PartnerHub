@@ -54,6 +54,7 @@ export default function Product( {product, isLoggedIn} ) {
                 <div className="product-card-details">
 
                     <div className="product-card-details-primary">
+                        
                         <div className="product-card-image">
                                 <Link to={`/tools/${product.code}`} aria-label="link to product description">
                                     <img
@@ -64,6 +65,7 @@ export default function Product( {product, isLoggedIn} ) {
                                     />         
                                 </Link>           
                         </div>
+
                         <p>Ø    {`${product.diameter} X 
                                 ${product.thick} X 
                                 ${product.b > 0 ? `${product.height}/${product.b}` : product.height }`
