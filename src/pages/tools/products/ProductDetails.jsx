@@ -1,9 +1,8 @@
 import React from "react";
-import Product from "./Product";
-import { useParams, Link, NavLink, Outlet, useLocation } from "react-router-dom"
+import { useParams, Link, useLocation } from "react-router-dom"
 import { LoadingContext, PricelistContext } from "../../../App"
 import blank from "../../../assets/blades/blank.png"
-import ProductEmojis from "./ProductDots";
+import ProductDots from "./ProductDots";
 import CustomButton from "../../../components/buttons/CustomButton";
 import Icon from "../../../components/icons/Icon";
 import leftArrow from "../../../assets/fa-icons/left-arrow.svg"
@@ -19,24 +18,9 @@ export default function ProductDetails() {
     const { id } = useParams()
     const location = useLocation()
 
-    console.log(location)
-
     if (pricelist.length < 1) return <h3>Loading...</h3>
 
     const product = pricelist.find(el => el.code == id)
-
-    console.log(product)
-
-    const cardColor = {
-        backgroundColor:
-            product.series === "Red" ? "red"
-                : product.series === "Porcelanic" ? "red"
-                    : product.series === "Orange" ? "orange"
-                        : product.series === "Blue" ? "blue"
-                            : product.series === "Green" ? "green"
-                                : product.series === "Black" ? "#313131"
-                                    : "#919191"
-    }
 
 
     // GET THE CORRECT PRICE OR LOGIN MESSAGE FOR THE BUTTON
@@ -44,32 +28,16 @@ export default function ProductDetails() {
     const standardPrice = Number(product?.price2023)
     const discountMultiplier = userData?.user.discount || 1
     const priceToDisplay = specialNetPrice || (standardPrice * discountMultiplier).toFixed(2)
-    const discount = (standardPrice - priceToDisplay) / standardPrice * 100
-    console.log('discount: ', discount)
-    
+
     const specialPrice = isLoggedIn ? "€" + priceToDisplay : "Login"
     const listPrice = isLoggedIn ? "€" + Number(product?.price2023).toFixed(2) : "Login"
+    const discount = (standardPrice - priceToDisplay) / standardPrice * 100
 
-    console.log('PICTURE', product.pictureSmall)
 
     return (
         <div className="article-page-outter">
 
-            {/* <Link
-                to=".."
-                relative="path"
-                className="back-button"
-            >&larr; <span>Back to all tools</span>
-            </Link>
-            <br />
-            <Link
-                to="../../cart"
-                relative="path"
-                className="back-button"
-            >&larr; <span>Back to cart</span>
-            </Link> */}
-            
-            {/* LINKS BACK */}
+            {/* LINKS ABOVE */}
             <div className="back-buttons-container"><Link
                     to=".."
                     relative="path"
@@ -88,10 +56,6 @@ export default function ProductDetails() {
             </div>
             
             <div className="article-page-wrapper">
-
-                
-
-
                 <div className="article-page-main">
 
                     {/* PRODUCT CODE */}
@@ -100,13 +64,12 @@ export default function ProductDetails() {
                     {/* CONTENT */}
                     <div className="article-page-main-picture-and-icons">
 
-            
                         {/* PRODUCT PICTURE */}
                         <div className="article-page-main-img">
                             <img
                                 loading="lazy"
                                 src={product.pictureBig || blank}
-                                alt="tool image full-size"
+                                alt={`${product.code} image full-size`}
                             />
                             <div className="article-label">
                                 <p>{product.quality}</p>
@@ -134,12 +97,13 @@ export default function ProductDetails() {
                         <h2 className="product-card-heading">{product.description}</h2>
                         <p className="product-card-technical-detail" style={{ textDecoration: "underline", letterSpacing: "0.5px", textAlign: "center" }}>{product.material.toUpperCase()}</p>
 
-                        <ProductEmojis
+                        <ProductDots
                             life={product.life}
                             finish={product.finish}
                             speed={product.speed}
                         />
 
+                        {/* SHOW PRICE ONLY IF LOGGED IN */}
                         {isLoggedIn && 
                             
                             <div className="product-card-list-prices">
@@ -156,11 +120,11 @@ export default function ProductDetails() {
 
                         <div className="product-card-technical-details">
                             <p className="product-card-technical-detail"><b>Alternative use</b>: {product.material.toLowerCase()} </p>
-                            <p className="product-card-technical-detail"><b>Diameter: </b> {product.diameter} mm </p>
-                            <p className="product-card-technical-detail"><b>Height: </b> {product.b > 0 ? `${product.height}/${product.b}` : product.height} mm </p>
-                            <p className="product-card-technical-detail"><b>Width: </b> {product.thick} mm </p>
-                            <p className="product-card-technical-detail"><b>Segments: </b> {product.segments} </p>
-                            <p className="product-card-technical-detail"><b>Hole: </b> {product.hole} mm </p>
+                            {product.diameter && <p className="product-card-technical-detail"><b>Diameter: </b> {product.diameter} mm </p>}
+                            {(product.height != 0) && <p className="product-card-technical-detail"><b>Height: </b> {product.b > 0 ? `${product.height}/${product.b}` : product.height} mm </p>}
+                            {(product.thick != 0) && <p className="product-card-technical-detail"><b>Width: </b> {product.thick} mm </p>}
+                            {(product.segments != 0) && <p className="product-card-technical-detail"><b>Segments: </b> {product.segments} </p>}
+                            {(product.hole != 0) && <p className="product-card-technical-detail"><b>Hole: </b> {product.hole} mm </p>}
                         </div>
 
                         <div className="product-card-add-button">
@@ -170,7 +134,6 @@ export default function ProductDetails() {
                                 size="big"
                                 productCode={product.code}
                             >
-                               {/* ADD TO CART: {specialPrice} */}
                                ADD TO CART
                             </CustomButton>
                         </div>
@@ -206,31 +169,9 @@ export default function ProductDetails() {
             <div className="article-page-wrapper">
                 <div className="article-page-secondary">
                         <h3>Discount</h3>
-                        {/* <p className="article-page-list-price"><b>List Price: </b>{isLoggedIn ? "€" + Number(product?.price2023).toFixed(2): "Login"}</p>
-                        <br />
-                        <p className="article-page-special-price"><b>Special Price: </b>{specialPrice}</p>
-                        <br /> */}
                         <p className="article-page-special-price"><b>Special Discount:</b> {isLoggedIn ? `${discount.toFixed(0)}% applied` : "Login required"}</p>
-                        {/* <p className="article-page-special-price"><b>Conditions:</b> {isLoggedIn ? `${discount.toFixed(0)}% applied` : "Login required"}</p> */}
-
-
                 </div>
             </div>
-{/* 
-            <div className="article-page-wrapper">
-                <div className="article-page-button">
-                    <CustomButton
-                        className="product-card-button-primary"
-                        purpose="primary"
-                        size="big"
-                        productCode={product.code}
-                    >
-                        Add to Cart: {specialPrice}
-                    </CustomButton>
-                </div>
-            </div> */}
-
-
 
         </div>
     )
