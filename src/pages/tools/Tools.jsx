@@ -52,30 +52,30 @@ export default function Tools() {
     }
 
     // START OF FILTERING LOGIC//
-    let displayedProducts;
+    const displayedProducts = React.useMemo(() => {
+        if (searchInput) {
+            return filteredData;
+            // IF FAMILY, MACHINE AND MATERIAL ARE CHOSEN, ALL 3 CRITERIA SHOULD MEET
+        } else if (familyFilterParam && machineFilterParam && materialFilterParam) {
+            return pricelist.filter(product =>
+                isFamilyMatching(product, familyFilterParam) &&
+                isMachineMatching(product, machineFilterParam) &&
+                isMaterialMatching(product, materialFilterParam)
+            );
+            // IF FAMILY IS CHOSEN BUT ONLY ONE FILTER APPLIED
+        } else if (familyFilterParam && (machineFilterParam || materialFilterParam)) {
+            return pricelist.filter(product =>
+                isFamilyMatching(product, familyFilterParam) &&
+                (isMachineMatching(product, machineFilterParam) || isMaterialMatching(product, materialFilterParam))
+            );
+            // FAMILY ONLY FILTER
+        } else if (familyFilterParam) {
+            return pricelist.filter(product => isFamilyMatching(product, familyFilterParam));
+        } else {
+            return pricelist;
+        }
+    }, [searchInput, familyFilterParam, machineFilterParam, materialFilterParam]);
 
-    // IF SEACHED BY CODE, OTHER FILTERS DON'T APPLY
-    if (searchInput) {
-        displayedProducts = filteredData;
-        // IF FAMILY, MACHINE AND MATERIAL ARE CHOSEN, ALL 3 CRITERIA SHOULD MEET
-    } else if (familyFilterParam && machineFilterParam && materialFilterParam) {
-        displayedProducts = pricelist.filter(product =>
-            isFamilyMatching(product, familyFilterParam) &&
-            isMachineMatching(product, machineFilterParam) &&
-            isMaterialMatching(product, materialFilterParam)
-        );
-        // IF FAMILY IS CHOSEN BUT ONLY ONE FILTER APPLIED
-    } else if (familyFilterParam && (machineFilterParam || materialFilterParam)) {
-        displayedProducts = pricelist.filter(product =>
-            isFamilyMatching(product, familyFilterParam) &&
-            (isMachineMatching(product, machineFilterParam) || isMaterialMatching(product, materialFilterParam))
-        );
-        // FAMILY ONLY FILTER
-    } else if (familyFilterParam) {
-        displayedProducts = pricelist.filter(product => isFamilyMatching(product, familyFilterParam))
-    } else {
-        displayedProducts = pricelist
-    }
 
     function isFamilyMatching(product, filterValue) {
         return convertStringToLowercasedArray(product.family).includes(filterValue);
@@ -89,7 +89,7 @@ export default function Tools() {
         return convertStringToLowercasedArray(product.material).includes(filterValue);
     }
 
-    // END OF FILTERING LOGIC//
+    // // END OF FILTERING LOGIC//
 
     function handleSubmit(event) {
         event.preventDefault()

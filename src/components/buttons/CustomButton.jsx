@@ -24,15 +24,15 @@ export default function CustomButton({ children, purpose, size, className, produ
     }
 
     function addItemToCart(event) {
-        let itemToAdd = event.target.id;
-        let updatedCart = { ...cart, [itemToAdd]: 1 };
+        const itemToAdd = event.target.id;
+        const updatedCart = { ...cart, [itemToAdd]: 1 };
         setCart(updatedCart)
         setInCart(true)
         saveToLocalStorageCart(updatedCart)
     }
 
     function removeItemFromCart(event) {
-        let itemToRemove = event.target.id;
+        const itemToRemove = event.target.id;
         const updatedCart = { ...cart }
         delete updatedCart[itemToRemove]
         saveToLocalStorageCart(updatedCart)
