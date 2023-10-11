@@ -37,14 +37,14 @@ import iso from '../../assets/fa-icons/iso.png'
 
 
 const icons = {
-    dry: dry,
-    al1: al1,
-    al2: al2,
+    dry,
+    al1,
+    al2,
     'angle grinder': angle_grinder,
     "BC": bc,
     "BLZ": blz,
-    wet: wet,
-    laser: laser,
+    wet,
+    laser,
     'floor saw': floor_saw,
     lacc,
     "LAR": lar,
@@ -82,7 +82,7 @@ export default function Icon({ i }) {
     const iArray = i.split(', ')
 
     return (
-        <div >
+        <div className='icon-img-container'>
             {
                 iArray.map((iconName, index) => (<img key={index} src={icons[iconName]} alt={iconName} />)) 
 

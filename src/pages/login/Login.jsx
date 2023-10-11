@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, push, onValue } from "firebase/database" 
 import { useLocation, useNavigate } from "react-router-dom"
@@ -101,7 +102,7 @@ export default function Login() {
                     {(!isLoggedIn) ? (
                         "Enter partner ID for access"
                     ) : ( <div className="login-greeting">
-                            <b>{greeting(userData?.user.name)}!</b> <br /> <br />
+                            <b>{greeting(userData?.user.name)}!</b> <br /> <br /><br /> 
                             You are logged in and now can see your a special prices and exclusive offers.
                          </div>
                         )}
@@ -118,12 +119,25 @@ export default function Login() {
                     style={{ display: isLoggedIn ? "none" : "block" }}
                 />
 
-                <button
-                    className="login-button" 
-                    aria-label="login button">
-                    {(!isLoggedIn) ? "LOG IN" : "LOG OUT" }
+                <div className="login-buttons">
+                    {
+                    isLoggedIn &&  
+                        <Link to="../../tools">
+                                <button
+                                    className="login-button green-button" 
+                                    aria-label="explore tools" >
+                                    EXPLORE
+                                </button>
+                            </Link>
+                    }
 
-                </button>
+                    <button
+                        className="login-button" 
+                        aria-label="login button">
+                        {(!isLoggedIn) ? "LOG IN" : "LOG OUT" }
+
+                    </button>
+                </div>
                 
             </form>
         </div>
