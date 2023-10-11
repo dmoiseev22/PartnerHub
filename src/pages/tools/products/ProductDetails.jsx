@@ -1,14 +1,14 @@
 import React from "react";
 import Product from "./Product";
 import { useParams, Link, NavLink, Outlet, useLocation } from "react-router-dom"
-import { LoadingContext, PricelistContext } from "../../App"
-import blank from "../../assets/blades/blank.png"
+import { LoadingContext, PricelistContext } from "../../../App"
+import blank from "../../../assets/blades/blank.png"
 import ProductEmojis from "./ProductDots";
-import CustomButton from "../../components/buttons/CustomButton";
-import Icon from "../../components/icons/Icon";
-import leftArrow from "../../assets/fa-icons/left-arrow.svg"
-import rightArrow from "../../assets/fa-icons/right-arrow.svg"
-import file from "../../assets/fa-icons/file-regular.svg"
+import CustomButton from "../../../components/buttons/CustomButton";
+import Icon from "../../../components/icons/Icon";
+import leftArrow from "../../../assets/fa-icons/left-arrow.svg"
+import rightArrow from "../../../assets/fa-icons/right-arrow.svg"
+import file from "../../../assets/fa-icons/file-regular.svg"
 
 
 export default function ProductDetails() {

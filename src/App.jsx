@@ -9,7 +9,7 @@ import Cart from './pages/cart/Cart'
 import Promos from "./pages/promos/Promos"
 import Login from "./pages/login/Login"
 import AuthRequired from './components/authentication/AuthRequired'
-import ProductDetails from './pages/products/ProductDetails'
+import ProductDetails from './pages/tools/products/ProductDetails'
 import PromosRecommended from "./pages/promos/PromosRecommended"
 import PromosGeneral from "./pages/promos/PromosGeneral"
 import NotFound from './pages/not-found/NotFound'

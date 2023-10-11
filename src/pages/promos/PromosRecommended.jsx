@@ -1,5 +1,5 @@
 import React from 'react'
-import Product from '../products/Product'
+import Product from '../tools/products/Product'
 import { PricelistContext } from "../../App"
 
 

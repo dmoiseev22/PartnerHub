@@ -1,5 +1,5 @@
 import React from "react"
-import Products from '../products/Products'
+import Products from './products/Products'
 import { Link, useSearchParams } from "react-router-dom"
 import { PricelistContext, LoadingContext } from "../../App"
 import DiscsFilters from "../../components/filters/DiscsFilter"

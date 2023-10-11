@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate, Link } from "react-router-dom"
-import CustomButton from "../../components/buttons/CustomButton"
-import blank from "../../assets/blades/blank.png"
+import CustomButton from "../../../components/buttons/CustomButton"
+import blank from "../../../assets/blades/blank.png"
 import ProductEmojis from "./ProductDots";
-import { CartContext } from "../../App";
-import { getDataFromLocalStorage } from "../../util/util";
-import Icon from "../../components/icons/Icon";
+import { CartContext } from "../../../App";
+import { getDataFromLocalStorage } from "../../../util/util";
+import Icon from "../../../components/icons/Icon";
 
 
 

@@ -1,7 +1,7 @@
 // import { limitToLast } from 'firebase/database'
 import React from 'react'
 import Product from './Product'
-import DiameterFilter from '../../components/filters/DiameterFilter'
+import DiameterFilter from '../../../components/filters/DiameterFilter'
 
 
 export default function Products({ filteredData, isLoggedIn }){
