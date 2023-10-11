@@ -1,8 +1,7 @@
 import React from "react";
-import { Navigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import CustomButton from "../../../components/buttons/CustomButton"
-import blank from "../../../assets/blades/blank.png"
-import ProductEmojis from "./ProductDots";
+import ProductDots from "./ProductDots";
 import { CartContext } from "../../../App";
 import { getDataFromLocalStorage } from "../../../util/util";
 import Icon from "../../../components/icons/Icon";
@@ -60,7 +59,7 @@ export default function Product( {product, isLoggedIn} ) {
                                     <img
                                     loading="lazy"
                                     src={product.pictureSmall}
-                                    alt="tool image"
+                                    alt={`${product.code} image small-size`}
                                     // src={blank} 
                                     />         
                                 </Link>           
@@ -74,24 +73,20 @@ export default function Product( {product, isLoggedIn} ) {
                     </div>
 
                     <div className="product-card-details-secondary">
-                        {/* <p className="product-card-description">{product.characteristics}</p> */}
                         <div className="product-card-technical">
 
                             <p className="product-card-technical-detail"><b>Diameter</b>: {product.diameter} mm </p>
-                            <p className="product-card-technical-detail">
-                                    <b>Height</b>: {toolHeight} mm</p>
-                            {/* <p className="product-card-technical-detail"><b>Width</b>: {product.thick} mm </p> */}
+                            {(product.height != 0) && <p className="product-card-technical-detail"><b>Height: </b> {product.b > 0 ? `${product.height}/${product.b}` : product.height} mm </p>}
+                            {(product.thick != 0) && <p className="product-card-technical-detail"><b>Width: </b> {product.thick} mm </p>}
                             <p className="product-card-technical-detail"><b>Materials</b>: {product.material.toLowerCase()} </p>
                             <p className="product-card-technical-detail"><b>Machines</b>: {product.machine.toLowerCase()} </p>
-
                             
-                            <ProductEmojis 
+                            <ProductDots 
                                 life={product.life}
                                 finish={product.finish}
                                 speed={product.speed}
                             />
 
-                            {/* <p className="product-card-technical-detail"><b>Machine</b>: {product.machine.toLowerCase()} </p> */}
                             <div className="product-card-technical-detail-icons">
                                 <Icon i={product.technology} />
                                 <Icon i={product.notch} />
@@ -110,16 +105,7 @@ export default function Product( {product, isLoggedIn} ) {
                                 aria-label="link to product description">
                                     Details
                             </Link>
-                            
-                            {/* <CustomButton 
-                                className="product-card-button-secondary"
-                                purpose="secondary"
-                                size="normal"
-                                productCode={product.code}
-                            >
-                                    <Link to={`/tools/${product.code}`}>Details</Link>
-                            </CustomButton> */}
-                            
+                                                        
                             <CustomButton
                                 className="product-card-button-primary"   
                                 purpose="primary"
