@@ -7,7 +7,7 @@ export default function Search({ handleChange, searchInput, handleSubmit }) {
             <label htmlFor="search"></label>
             <input 
                 type="text" 
-                placeholder="Enter product code here"
+                placeholder={`Enter product code here`}
                 onChange={handleChange}
                 name="search"
                 value={searchInput}
