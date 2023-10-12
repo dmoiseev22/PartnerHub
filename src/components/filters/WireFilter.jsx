@@ -56,8 +56,7 @@ export default function WireFilter({ handleFilterChange, machineFilterParam, mat
 
                     <h3>Material</h3>
 
-                    {
-                    materialFilterButtons.map(filter => {
+                    {materialFilterButtons.map(filter => {
                         return (
                             <button
                                 key={filter}

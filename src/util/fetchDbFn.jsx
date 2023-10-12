@@ -2,7 +2,6 @@ import React from "react"
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, push, onValue } from "firebase/database" 
 
-// NEED TO ADD USE MEMO TO AVOIDE UNNECESSARY RE-RENDER
 export default function fetchDbFn(collection){
     let data 
 

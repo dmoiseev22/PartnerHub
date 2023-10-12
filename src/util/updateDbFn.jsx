@@ -5,8 +5,6 @@ import { getDatabase, ref, push, onValue } from "firebase/database"
 // NEED TO ADD USE MEMO TO AVOIDE UNNECESSARY RE-RENDER
 export default function updateDbFn(collection, update){
 
-    console.log("module launched")
-
     // AVOID DB MUTATION
     if (collection === "pricelist") {return <p>Database is read-only</p>}
 
@@ -29,8 +27,6 @@ export default function updateDbFn(collection, update){
     React.useEffect(()=>{
         push(onlinePriceListDb, update)
     }, [])
-
-    console.log("module finished")
     
     return <p>{`Data update request send to ${collection} database`}</p>
 }

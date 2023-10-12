@@ -3,9 +3,8 @@ import React from "react"
 
 export default function Badge({ productCode, userData, badgeColor, position, left }) {
 
-    console.log(badgeColor)
-
     let badgeType
+    
     if (userData?.recommended[productCode] !== undefined) {
         badgeType = "recommended"
     } else if (userData?.usualproducts[productCode] !== undefined) {
@@ -13,7 +12,6 @@ export default function Badge({ productCode, userData, badgeColor, position, lef
     } else {
         badgeType = badgeColor || null
     }
-    console.log(productCode)
 
     const style = {
         backgroundColor: badgeType === "recommended" ? "rgb(48, 161, 69" : badgeType === "usual" ? "blue" : badgeType,
@@ -23,7 +21,9 @@ export default function Badge({ productCode, userData, badgeColor, position, lef
     }
     
     return (
-        <div style={style} className="badge">
+        <div 
+            style={style} 
+            className="badge">
         </div>
     )
 }

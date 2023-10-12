@@ -3,8 +3,6 @@ import Badge from "../../components/badge/Badge";
 
 export default function CartFastOrder({ addUsualProducts, addRecommendedProducts }) {
 
-    console.log('CART FAST ORDER RENDERED')
-
     return (
         <div className="cart-fast-order-wrapper">
                         

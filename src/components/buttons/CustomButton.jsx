@@ -25,6 +25,7 @@ export default function CustomButton({ children, purpose, size, className, produ
 
     function addItemToCart(event) {
         const itemToAdd = event.target.id;
+        console.log(itemToAdd)
         const updatedCart = { ...cart, [itemToAdd]: 1 };
         setCart(updatedCart)
         setInCart(true)
@@ -74,7 +75,7 @@ export default function CustomButton({ children, purpose, size, className, produ
             className={className}
             style={(inCart && purpose === "primary") ? styleInCart : style}
             onClick={isLoggedIn ? handleClick : () => navigate("/login", { state: {"from": location.pathname} })}
-            id={productCode  + "add to cart button"}>
+            id={productCode}>
             {(inCart && purpose === "primary") ? "ADDED" : children}
 
         </button>

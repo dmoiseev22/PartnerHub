@@ -20,9 +20,7 @@ function getDataFromLocalStorage(data) {
 }
 
 function getFilterClass(filter){
-    console.log(filter)
     const filterClass = filter.split(' ').join('-')
-    console.log(filterClass)
 }
 
 function capitalizeFirstLetter(phrase){
