@@ -2,6 +2,8 @@
 
 LIVE DEMO: [PARTNER HUB](https://partner-hub.netlify.app/)
 
+Login: "DemoUser"
+
 ## **TECH STACK:**
 
     React
