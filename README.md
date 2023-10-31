@@ -1,6 +1,6 @@
 # PartnerHub 
 
-LIVE: [PARTNER HUB](https://partner-hub.netlify.app/)
+LIVE DEMO: [PARTNER HUB](https://partner-hub.netlify.app/)
 
 ## **TECH STACK:**
 
