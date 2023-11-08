@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-
 import Layout from "./components/layout-components/Layout"
 import Home from "./pages/home/Home"
 import Tools from "./pages/tools/Tools"
@@ -84,7 +83,7 @@ export default function App() {
                   </Route>
                 </Route>
                 <Route path="login" element={<Login />} />
-                <Route path="/*" element={<NotFound />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
           </BrowserRouter>
