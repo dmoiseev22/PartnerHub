@@ -16,7 +16,9 @@ export default function ProductDots({ life , finish , speed }){
         for (let i = 0; i < count; i++) {
           dots.push(<RedDot key={i} />);
         }
-    const emptyDotCount = Math.max(0, 5 - count);
+        
+        const emptyDotCount = Math.max(0, 5 - count);
+        
         for (let i = 0; i < emptyDotCount; i++) {
           dots.push(<EmptyDot key={`empty-${i}`} />);
         }

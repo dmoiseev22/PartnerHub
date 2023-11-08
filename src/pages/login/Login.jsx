@@ -123,12 +123,12 @@ export default function Login() {
                     {
                     isLoggedIn &&  
                         <Link to="../../tools">
-                                <button
-                                    className="login-button green-button" 
-                                    aria-label="explore tools" >
-                                    EXPLORE
-                                </button>
-                            </Link>
+                            <button
+                                className="login-button green-button" 
+                                aria-label="explore tools" >
+                                EXPLORE
+                            </button>
+                        </Link>
                     }
 
                     <button
