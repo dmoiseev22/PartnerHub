@@ -1,12 +1,15 @@
 import React from "react";
+import BarLoader from 'react-spinners/BarLoader'
 import { Link } from "react-router-dom"
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, push, onValue } from "firebase/database" 
 import { useLocation, useNavigate } from "react-router-dom"
+import firebaseConfig from "../../components/authentication/config";
 
 export default function Login() {
     const [input, setInput] = React.useState("")
     const [clientId, setClientId] = React.useState("")
+    const [loading, setLoading] = React.useState(false)
     const [isLoggedIn, setIsLoggedIn] = React.useState(
         JSON.parse(window.localStorage.getItem("loggedin"))
     )
@@ -17,17 +20,7 @@ export default function Login() {
 
     const userData = JSON.parse(window.localStorage.getItem("partners-app-local-storage"))
 
-    
     React.useEffect(()=>{
-        const firebaseConfig = {
-            apiKey: "AIzaSyBD_OUECP1sYXgzdk1q83HrrXUVq7o0lls",
-            authDomain: "solga-partners-home.firebaseapp.com",
-            databaseURL: "https://solga-partners-home-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "solga-partners-home",
-            storageBucket: "solga-partners-home.appspot.com",
-            messagingSenderId: "1037744607558",
-            appId: "1:1037744607558:web:ed96850c9ae6e7b6d3d547"
-          };
         
         if (clientId) {
             const app = initializeApp(firebaseConfig)
@@ -35,8 +28,9 @@ export default function Login() {
             const clientDatabase = ref(database, `clients/` + clientId)
 
             onValue(clientDatabase, function(snapshot){
+                setLoading(true)
+                setTimeout(()=>setLoading(false), 10000)
                 let clientData = Object.values(snapshot.val())
-                console.log(clientData)
                 if (clientData) {
                     window.localStorage.setItem(
                         "partners-app-local-storage", 
@@ -44,8 +38,10 @@ export default function Login() {
                     )
                     localStorage.setItem("loggedin", true)
                     setIsLoggedIn(true)
+                    
                     returnToPrevPage()
                 } else {console.log("unsuccessfull login intent")}
+                setLoading(false)
             })
         }
         
@@ -67,6 +63,7 @@ export default function Login() {
     }
     
     function handleChange(e){
+        setLoading(false)
         setInput(e.target.value)
     }
 
@@ -98,15 +95,14 @@ export default function Login() {
                         <h3 className="login-error">{location.state.message}</h3>
                 }
 
-                {/* <label htmlFor="id"> */}
-                    {(!isLoggedIn) ? (
-                        "Enter partner ID for access"
-                    ) : ( <div className="login-greeting">
-                            <b>{greeting(userData?.user.name)}!</b> <br /> <br /><br /> 
-                            You are logged in and now can see your a special prices and exclusive offers.
-                         </div>
-                        )}
-                {/* </label> */}
+
+                {(!isLoggedIn) ? (
+                    "Enter partner ID for access"
+                ) : ( <div className="login-greeting">
+                        <b>{greeting(userData?.user.name)}!</b> <br /> <br /><br /> 
+                        You are logged in and now can see your a special prices and exclusive offers.
+                        </div>
+                    )}
 
                 <input 
                     autoFocus
@@ -118,6 +114,9 @@ export default function Login() {
                     placeholder="Enter your id here"
                     style={{ display: isLoggedIn ? "none" : "block" }}
                 />
+
+                <BarLoader  loading={loading} color="#C31313" width="160px"/>
+                {loading && <p>Loading, please wait...</p>}
 
                 <div className="login-buttons">
                     {
