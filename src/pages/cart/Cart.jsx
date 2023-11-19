@@ -51,7 +51,6 @@ export default function Cart() {
     }
 
     function addUsualProducts(){
-        console.log('addUsualProducts function triggered! ')
         const updatedCart = {
             ...cart,
             ...userData.usualproducts

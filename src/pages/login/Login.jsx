@@ -91,7 +91,7 @@ export default function Login() {
             <form className="login-form" onSubmit={handleSubmit}>
                 
                 {
-                    location.state?.message && !loading &&
+                    location.state?.message && !isLoggedIn && !loading &&
                         <h3 className="login-error red">{location.state.message}</h3>
                 }
 
@@ -102,7 +102,7 @@ export default function Login() {
                 ) : (<>
                         <img src={userData?.user.companylogo} alt="" />
                         <div className="login-greeting">
-                        <b>{greeting(userData?.user.name)}!</b> <br /> <br /><br /> 
+                        <h3>{greeting(userData?.user.name)}!</h3> <br /> <br /> 
                         You are logged in and can now see special prices and{" "}
                         <Link
                             to="../../promos/recommended"
