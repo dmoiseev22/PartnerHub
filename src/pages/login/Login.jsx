@@ -91,18 +91,30 @@ export default function Login() {
             <form className="login-form" onSubmit={handleSubmit}>
                 
                 {
-                    location.state?.message &&
-                        <h3 className="login-error">{location.state.message}</h3>
+                    location.state?.message && !loading &&
+                        <h3 className="login-error red">{location.state.message}</h3>
                 }
 
 
-                {(!isLoggedIn) ? (
+                {
+                !isLoggedIn ? (
                     "Enter partner ID for access"
-                ) : ( <div className="login-greeting">
+                ) : (<>
+                        <img src={userData?.user.companylogo} alt="" />
+                        <div className="login-greeting">
                         <b>{greeting(userData?.user.name)}!</b> <br /> <br /><br /> 
-                        You are logged in and now can see your a special prices and exclusive offers.
+                        You are logged in and can now see special prices and{" "}
+                        <Link
+                            to="../../promos/recommended"
+                            className="red"
+                            style={{ textDecoration: "none" }}
+                        >
+                            exclusive offers
+                        </Link>
                         </div>
-                    )}
+                    </>
+                )
+                }
 
                 <input 
                     autoFocus
@@ -116,7 +128,7 @@ export default function Login() {
                 />
 
                 <BarLoader  loading={loading} color="#C31313" width="160px"/>
-                {loading && <p>Loading, please wait...</p>}
+                {loading && <p><small className="red">Loading, please wait...</small></p>}
 
                 <div className="login-buttons">
                     {
