@@ -142,12 +142,15 @@ export default function Login() {
                         </Link>
                     }
 
-                    <button
+                    {
+                    !loading && 
+                        <button
                         className="login-button" 
-                        aria-label="login button">
-                        {(!isLoggedIn) ? "LOG IN" : "LOG OUT" }
-
+                        aria-label="login button"
+                        >   
+                            {(!isLoggedIn && !loading) ? "LOG IN" : "LOG OUT" }
                     </button>
+                    }
                 </div>
                 
             </form>
