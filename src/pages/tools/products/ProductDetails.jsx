@@ -41,6 +41,10 @@ export default function ProductDetails() {
         setIsImageLoading(false);
     };
 
+    const imageStyle = {
+        height: `${isImageLoading ? '0px' : 'auto'}`
+    }
+
     return (
         <div className="article-page-outter">
 
@@ -79,6 +83,7 @@ export default function ProductDetails() {
                                 loading="lazy"
                                 src={product.pictureBig}
                                 onLoad={handleImageLoad}
+                                style={imageStyle}
                                 alt={`${product.code} image full-size`}
                             />
                             <div className="article-label">
