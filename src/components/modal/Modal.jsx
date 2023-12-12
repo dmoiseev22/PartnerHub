@@ -14,7 +14,7 @@ export default function Modal({ closeModal }) {
                 <div className="modal-butons">
 
                     <Link
-                        to="">
+                        to={() => undefined}>
 
                         <button className="reject" onClick={closeModal}>
                             Reject 
@@ -23,7 +23,7 @@ export default function Modal({ closeModal }) {
                     </Link>
 
                     <Link
-                        to="">
+                        to={() => undefined}>
 
                         <button className="accept" onClick={closeModal}>
                             Accept

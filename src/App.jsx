@@ -5,6 +5,7 @@ import Layout from "./components/layout-components/Layout"
 import Home from "./pages/home/Home"
 import Tools from "./pages/tools/Tools"
 import Cart from './pages/cart/Cart'
+import AI from './components/assistant/AI'
 import Promos from "./pages/promos/Promos"
 import Login from "./pages/login/Login"
 import AuthRequired from './components/authentication/AuthRequired'
@@ -66,6 +67,7 @@ export default function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="tools" element={<Tools />} />
+                <Route path="ai" element={<AI />} />
                 <Route path="tools/:id" element={<ProductDetails />} />
                 <Route element={<AuthRequired />}>
                   <Route path="cart" element={<Cart />} />

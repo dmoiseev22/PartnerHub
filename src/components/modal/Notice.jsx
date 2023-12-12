@@ -11,7 +11,7 @@ export default function Notice({ closeModal }) {
 
                 <div className="modal-butons">
                     <Link
-                        to="">
+                        to={() => undefined}>
                         <button className="accept" onClick={closeModal}>
                             OK
                         </button>

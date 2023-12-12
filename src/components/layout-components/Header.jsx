@@ -100,14 +100,14 @@ export default function Header() {
                                 </span>
                             </NavLink>
 
-                            {/* <NavLink 
+                            <NavLink 
                                 className="navbar-link"
-                                to="feedback" 
+                                to="ai" 
                                 style={({ isActive }) => isActive ? activeStyles : null}
                                 onClick={()=>setOpen(!isOpen)}
                             >
-                                Feedback
-                            </NavLink> */}
+                                AI
+                            </NavLink>
                             <NavLink
                                 className="navbar-link"
                                 to="login"

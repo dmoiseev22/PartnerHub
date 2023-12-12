@@ -26,7 +26,11 @@ export default function Tools() {
 
     const isLoggedIn = localStorage.getItem("loggedin")
 
-    // console.log(pricelist)
+    console.log(pricelist)
+    console.log(pricelist.map(product => {
+
+        return `Diamond ${product.family === "grinding" ? "grinding cup" : product.family === "precast" ? "precast blade" : product.family} with product code ${product.code} and description "${product.description}". ${product.technology === "laser" ? "It is laser welded tool." : ""} It is best used for the following materials: ${product.material}. The tool has diameter of ${product.diameter}mm ${product.hole ? `and shaft hole ${product.hole} mm` : ""} is designed to be used on the following machines: ${product.machine}. Machines' recommended power: ${product.power}. The tool is designed to work in ${product.type === "dry" ? "dry" : "wet"} conditions. It’s a ${product.quality} quality. The width of the tool is: ${product.thick}mm, the height is ${Number(product.height) + Number(product.b)}mm. ${product.b ? `The segment base is ${product.b}.` : null} ${product.segments > 1 ? `It has ${product.segments} segments.` : null} ${product.notch ? `Tool notch type is ${product.notch}` : "" } ${product.notch}. Product belongs to series: ${product.series}  It’s performance characteristics are: speed: ${product.speed} out of 5, life: ${product.life} out of 5, finish: ${product.finish} out of 5. Catalogue link: ${product.catalogue}. Link to product details: ${`https://partner-hub.netlify.app/tools/${product.code}`}`
+    }))
 
     function clearFilters() {
         setSearchParams(prevParams => {
