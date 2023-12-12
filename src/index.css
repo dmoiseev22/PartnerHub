@@ -1668,6 +1668,10 @@ input::-webkit-inner-spin-button {
 
 }
 
+.assistant-container h1{
+  margin: 20px 0 10px;
+}
+
 .assistant-container form {
   display: flex;
   flex-direction: column;

@@ -17,7 +17,7 @@ export default function AI () {
     `
     const welcomeQueryHints = (
       <div className="queryHints-container">
-        <h4>You can ask me anything but the prices, for example:</h4>
+        <h4>Ask me anything about Diamond Tools, for example:</h4>
         <ol>
           <div onClick={handleClick}><li >Recommmend 115mm blade to cut tiles with perfect finish</li></div>
           <div onClick={handleClick}><li>В чем разница между 20010200 и 20000200?</li></div>
@@ -128,6 +128,8 @@ export default function AI () {
 
     return (
         <div className="assistant-container">
+
+            <h1>AI Assistant</h1>
 
             <form onSubmit={handleSubmit}>
                 <input 
