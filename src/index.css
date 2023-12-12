@@ -1735,7 +1735,8 @@ input::-webkit-inner-spin-button {
   border-radius: 20px;
   text-align: left;
   max-width: 100%;
-  padding: 30px
+  padding: 30px;
+  margin-bottom: 20px;
 }
 
 .queryHints-container h4 {

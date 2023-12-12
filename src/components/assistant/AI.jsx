@@ -108,7 +108,7 @@ export default function AI () {
                 content: `Context: ${text} Question: ${query}`
                 }
             ],
-            temperature: 0.3,
+            temperature: 0.2,
             frequency_penalty: 0.5,
         });
         console.log("usage: ", usage)
