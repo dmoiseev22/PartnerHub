@@ -18,10 +18,10 @@ export default function AI () {
         <h4>You can ask me anything but the prices, for example:</h4>
         <ol>
           <div onClick={handleClick}><li >Recommmend 115mm blade to cut tiles with perfect finish</li></div>
-          <div onClick={handleClick}><li>What is the difference between 20010200 and 20000200?</li></div>
-          <div onClick={handleClick}><li>What is the best tool for grinding concrete on angle grinder 125mm?</li></div>
-          <div onClick={handleClick}><li>Suggest the blade with smallest width to cut porcelain in diameter 115mm</li></div>
-          <div onClick={handleClick}><li>Provide link for detailed information about 23117350 SWIFT blade</li></div>
+          <div onClick={handleClick}><li>В чем разница между 20010200 и 20000200?</li></div>
+          <div onClick={handleClick}><li>Quel est le meilleur outil pour poncer le béton sur une meuleuse d'angle de 125 mm?</li></div>
+          <div onClick={handleClick}><li>Мi disco corta lento, ¿cuál puede ser el problema?</li></div>
+          <div onClick={handleClick}><li>قم بتوفير رابط للحصول على معلومات مفصلة حول شفرة 23117350 SWIFT</li></div>
         </ol>
       </div>
     )
@@ -108,7 +108,7 @@ export default function AI () {
                 content: `Context: ${text} Question: ${query}`
                 }
             ],
-            temperature: 0.65,
+            temperature: 0.3,
             frequency_penalty: 0.5,
         });
         console.log("usage: ", usage)
@@ -118,10 +118,11 @@ export default function AI () {
                 choices[0].message
             ]
         })
-    
+
       setCompletion(convertLinksToAnchors(choices[0].message.content));
     }
 
+    console.log("chatHistory: ", chatHistory)
 
     return (
         <div className="assistant-container">
