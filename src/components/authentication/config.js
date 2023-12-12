@@ -17,7 +17,7 @@ const firebaseConfig = {
 /** OpenAI config */
 // if (!process.env.OPENAI_API_KEY) throw new Error("OpenAI API key is missing or invalid.");
 export const openai = new OpenAI({
-  apiKey: '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',
+  apiKey: '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',
   dangerouslyAllowBrowser: true
 });
 

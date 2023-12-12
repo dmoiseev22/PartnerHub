@@ -1,6 +1,6 @@
 import React from "react";
 import { openai, supabase } from '../authentication/config.js'
-import BarLoader from 'react-spinners/BarLoader'
+import BeatLoader from 'react-spinners/BeatLoader'
 
 const chatInitialSettings = [{
     role: 'system',
@@ -150,7 +150,7 @@ export default function AI () {
             </form>
 
             {fetchingData ? 
-                <BarLoader className="ai-loader"  loading={fetchingData} color="#C31313" width="160px"/> : 
+                <BeatLoader className="ai-loader"  loading={fetchingData} color="#C31313" width="160px"/> : 
                 <h4 className="reply"><span className="inline">{completion}</span> </h4>
             }
 
