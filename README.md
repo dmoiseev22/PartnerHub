@@ -1,4 +1,4 @@
-# PartnerHub 
+# PartnerHub & AI Assistant
 
 LIVE DEMO: [PARTNER HUB](https://partner-hub.netlify.app/)
 
@@ -11,13 +11,15 @@ LIVE DEMO: [PARTNER HUB](https://partner-hub.netlify.app/)
     HTML
     CSS
     Firebase
+    Supabase
+    OpenAI API
     Single Page Application (SPA)
     Mobile-first design
     Responsive layout
 
 ## **DESCRIPTION:**
 
-The CIS Partners App is designed to meet the needs of B2B export-oriented companies with extensive product portfolios. It aims to address the challenges posed by complex PDF catalogs and Excel price lists by providing an efficient, digital solution. This app streamlines communication between the export company, overseas distributors, and end users. 
+The CIS Partners App with AI assistant is designed to meet the needs of B2B export-oriented companies with extensive product portfolios. It aims to address the challenges posed by complex PDF catalogs and Excel price lists by providing an efficient, digital solution. This app streamlines communication between the export company, overseas distributors, and end users. 
 
 ### **Project Objectives:**
 
@@ -50,4 +52,5 @@ The CIS Partners App is designed to meet the needs of B2B export-oriented compan
 
 ## **Other relevant information:**
 
+AI Assistant is trained with company's knowledge.
 Orders are submited and stored in the Firebase Database and include Customer ID, submission time and the order.  
