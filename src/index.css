@@ -1716,11 +1716,28 @@ input::-webkit-inner-spin-button {
   overflow-wrap: break-word;
   text-align: justify;
   text-justify: inter-word;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .ai-loader {
   margin-top: 50px;
+}
+
+.queryHints-container{
+  text-align: left;
+}
+
+.queryHints-container h4 {
+  margin: 20px 0;
+  
+  
+
+}
+
+.queryHints-container li {
+  line-height: 1.5em;
+  list-style-type: circle;
+  color:#2b3345bc;
 }
 
 .inline {
@@ -2158,7 +2175,7 @@ input::-webkit-inner-spin-button {
 
 .reply {
 
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 @media (min-width: 1100px) {

@@ -2,6 +2,7 @@ import React from "react";
 import { openai, supabase } from '../authentication/config.js'
 import BeatLoader from 'react-spinners/BeatLoader'
 
+
 const chatInitialSettings = [{
     role: 'system',
     content: `You are Solga AI Assistant. You are an enthusiastic diamond tools expert who loves recommending tools to people. 
@@ -15,8 +16,21 @@ const chatInitialSettings = [{
 }];
 
 const welcomeMessage = `
-    Hi there! I am a Solga AI Assistant. You can ask me anything you want about Diamond Tools and I'll be happy to assist!
+    Hi there! I am a Solga AI Assistant. You can ask me anything you want about Diamond Tools and I'll be happy to assist! I know about 115-400 diamond blades and diamond cups, techcnical characteristics and ready to support you for any related inquery. For prices, please ask your manager. 
 `
+
+const welcomeQueryHints = (
+  <div className="queryHints-container">
+    <h4>You can ask me anything but the prices, for example:</h4>
+    <ol>
+      <li>Recommmend me 115mm blade to cut tiles with very good finish</li>
+      <li>What is the difference between 20010200 and 20000200?</li>
+      <li>What is the best tool for grinding concrete on angle grinder 125mm?</li>
+      <li>Suggest the blade with smallest width to cut porcelain in diameter 115mm</li>
+      <li>Provide link for detailed information about 23117350 SWIFT blade</li>
+    </ol>
+  </div>
+)
 
 // HELPER FUNCTION
 function convertLinksToAnchors(text) {
@@ -46,11 +60,8 @@ export default function AI () {
     const [input, setInput] = React.useState('')
     const [chatHistory, setChatHistory] = React.useState(chatInitialSettings)
     const [completion, setCompletion] = React.useState(welcomeMessage)
+    const [queryHints, setQueryHints] = React.useState(welcomeQueryHints)
     const [fetchingData, setFetchingData] = React.useState(false)
-
-    console.log("input: ", input)
-    console.log("chatHistory: ", chatHistory)
-
 
     const handleChange = (e) => {
         setInput(e.target.value)
@@ -71,9 +82,11 @@ export default function AI () {
           const embedding = await createEmbedding(input);
           const match = await findNearestMatch(embedding);
           await getChatCompletion(match, input);
+          setQueryHints('')
         } catch (error) {
            console.error('Error in main function.', error.message);
-           setCompletion("Sorry, something went wrong. Please try again.");
+           setCompletion("Sorry, something went wrong. Please try again.")
+           setQueryHints(welcomeQueryHints)
         }
       }
     
@@ -151,7 +164,10 @@ export default function AI () {
 
             {fetchingData ? 
                 <BeatLoader className="ai-loader"  loading={fetchingData} color="#C31313" width="160px"/> : 
-                <h4 className="reply"><span className="inline">{completion}</span> </h4>
+                <>
+                <h4 className="reply"><b>AI:</b><span className="inline">{completion}</span> </h4>
+                <div className="queryhints">{queryHints}</div>
+                </>
             }
 
         </div>
