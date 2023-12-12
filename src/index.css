@@ -1746,8 +1746,21 @@ input::-webkit-inner-spin-button {
 
 .queryHints-container li {
   line-height: 1.5em;
-  list-style-type: circle;
+  list-style-type: none;
   color:#2b3345bc;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 8px 10px;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.queryHints-container li:hover {
+  transform: scale(1.01);
+  color:#b81b1b;
+
 }
 
 .inline {

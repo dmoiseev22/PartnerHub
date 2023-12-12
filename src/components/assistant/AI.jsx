@@ -15,22 +15,7 @@ const chatInitialSettings = [{
     Reply in maximum 60 words. Spesk the same language as user` 
 }];
 
-const welcomeMessage = `
-    Hi there! I am a Solga AI Assistant. You can ask me anything you want about Diamond Tools and I'll be happy to assist! I know about 115-400 diamond blades and diamond cups, techcnical characteristics and ready to support you for any related inquery. For prices, please ask your manager. 
-`
 
-const welcomeQueryHints = (
-  <div className="queryHints-container">
-    <h4>You can ask me anything but the prices, for example:</h4>
-    <ol>
-      <li>Recommmend 115mm blade to cut tiles with perfect finish</li>
-      <li>What is the difference between 20010200 and 20000200?</li>
-      <li>What is the best tool for grinding concrete on angle grinder 125mm?</li>
-      <li>Suggest the blade with smallest width to cut porcelain in diameter 115mm</li>
-      <li>Provide link for detailed information about 23117350 SWIFT blade</li>
-    </ol>
-  </div>
-)
 
 // HELPER FUNCTION
 function convertLinksToAnchors(text) {
@@ -57,6 +42,22 @@ function convertLinksToAnchors(text) {
 
 export default function AI () {
 
+    const welcomeMessage = `
+        Hi there! I am a Solga AI Assistant. You can ask me anything you want about Diamond Tools and I'll be happy to assist! I know about 115-400 diamond blades and diamond cups, techcnical characteristics and ready to support you for any related inquery. For prices, please ask your manager. 
+    `
+    const welcomeQueryHints = (
+      <div className="queryHints-container">
+        <h4>You can ask me anything but the prices, for example:</h4>
+        <ol>
+          <div onClick={handleClick}><li >Recommmend 115mm blade to cut tiles with perfect finish</li></div>
+          <div onClick={handleClick}><li>What is the difference between 20010200 and 20000200?</li></div>
+          <div onClick={handleClick}><li>What is the best tool for grinding concrete on angle grinder 125mm?</li></div>
+          <div onClick={handleClick}><li>Suggest the blade with smallest width to cut porcelain in diameter 115mm</li></div>
+          <div onClick={handleClick}><li>Provide link for detailed information about 23117350 SWIFT blade</li></div>
+        </ol>
+      </div>
+    )
+
     const [input, setInput] = React.useState('')
     const [chatHistory, setChatHistory] = React.useState(chatInitialSettings)
     const [completion, setCompletion] = React.useState(welcomeMessage)
@@ -73,6 +74,10 @@ export default function AI () {
         await main(input);
         setInput("")
         setFetchingData(false)
+    }
+
+    function handleClick(e) {
+      setInput(e.target.innerText)
     }
 
 
@@ -145,6 +150,8 @@ export default function AI () {
       setCompletion(convertLinksToAnchors(choices[0].message.content));
     }
 
+
+
     return (
         <div className="assistant-container">
 
@@ -165,7 +172,7 @@ export default function AI () {
             {fetchingData ? 
                 <BeatLoader className="ai-loader"  loading={fetchingData} color="#C31313" width="160px"/> : 
                 <>
-                <h4 className="reply"><b>AI: </b><span className="inline">{completion}</span> </h4>
+                <div className="reply"><b>AI: </b><span className="inline">{completion}</span> </div>
                 <div className="queryhints">{queryHints}</div>
                 </>
             }
