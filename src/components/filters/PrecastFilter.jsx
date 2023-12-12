@@ -1,5 +1,5 @@
 import React from 'react'
-import { getFilterClass, capitalizeFirstLetter } from "../../util/util.js"
+import { getFilterClass, capitalizeFirstLetter } from "../../util/util.jsx"
 
 export default function PrecastFilter({ handleFilterChange, machineFilterParam, materialFilterParam }) {
 

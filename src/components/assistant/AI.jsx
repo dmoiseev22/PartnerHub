@@ -1,46 +1,14 @@
 import React from "react";
-import { openai, supabase } from '../authentication/config.js'
+import { supabase, chatInitialSettings } from '../authentication/config.js'
 import BeatLoader from 'react-spinners/BeatLoader'
-
-
-const chatInitialSettings = [{
-    role: 'system',
-    content: `You are Solga AI Assistant. You are an enthusiastic diamond tools expert who loves recommending tools to people. 
-    You will be given two pieces of information - some context about diamond tools and a question. 
-    Your main job is to formulate a short answer to the question using the provided context. If you are askied to provide additional information on a product, focus on previously provided code.
-    If the answer is not given in the context, find the answer in the conversation history if possible. 
-    If you are unsure and cannot find the answer, say, "Sorry, I don't know the answer." Do not make up the answer.
-    But you can help with technical questions related only to diamond tools even if the data was not provided in context.
-    Always speak as if you were chatting to a client, you can joke but be polite. 
-    Reply in maximum 60 words. Spesk the same language as user` 
-}];
-
-
-
-// HELPER FUNCTION
-function convertLinksToAnchors(text) {
-  const urlRegex = /(https?:\/\/[^\s]+[^\s.,])/g;
-
-  // Split text into parts and create an array of React components
-  const parts = text.split(urlRegex).map((part, index) => {
-    if (index % 2 === 1) {
-      // If it's a URL, return an anchor component
-      return (
-        <a key={index} href={part} target="_blank">
-          {part}
-        </a>
-      );
-    } else {
-      // Otherwise, return the text as is
-      return <span key={index}>{part}</span>;
-    }
-  });
-
-  return <div>{parts}</div>;
-}
+import OpenAI from 'openai';
+import { APIContext } from "../../App" 
+import { convertLinksToAnchors } from "../../util/util.jsx"
 
 
 export default function AI () {
+
+    const API_KEY = React.useContext(APIContext)
 
     const welcomeMessage = `
         Hi there! I am a Solga AI Assistant. You can ask me anything you want about Diamond Tools and I'll be happy to assist! I know about 115-400 diamond blades and diamond cups, techcnical characteristics and ready to support you for any related inquery. For prices, please ask your manager. 
@@ -64,6 +32,11 @@ export default function AI () {
     const [queryHints, setQueryHints] = React.useState(welcomeQueryHints)
     const [fetchingData, setFetchingData] = React.useState(false)
 
+    const openai = new OpenAI({
+      apiKey: API_KEY,
+      dangerouslyAllowBrowser: true
+    });
+
     const handleChange = (e) => {
         setInput(e.target.value)
     }
@@ -79,7 +52,6 @@ export default function AI () {
     function handleClick(e) {
       setInput(e.target.innerText)
     }
-
 
     async function main(input) {
         try {
@@ -151,7 +123,6 @@ export default function AI () {
     }
 
 
-
     return (
         <div className="assistant-container">
 
@@ -169,12 +140,14 @@ export default function AI () {
                 </button>
             </form>
 
-            {fetchingData ? 
-                <BeatLoader className="ai-loader"  loading={fetchingData} color="#C31313" width="160px"/> : 
-                <>
-                <div className="reply"><b>AI: </b><span className="inline">{completion}</span> </div>
-                <div className="queryhints">{queryHints}</div>
-                </>
+
+            {fetchingData 
+                ? <BeatLoader className="ai-loader"  loading={fetchingData} color="#C31313" width="160px"/>
+                : <>
+                    <div className="reply"><b>AI: </b><span className="inline">{completion}</span> </div>
+                    <div className="queryhints">{queryHints}</div>
+                  </>
+                
             }
 
         </div>

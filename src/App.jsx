@@ -21,12 +21,14 @@ import { getDatabase, ref, push, onValue } from "firebase/database"
 const PricelistContext = React.createContext()
 const LoadingContext = React.createContext()
 const CartContext = React.createContext()
+const APIContext = React.createContext()
 
 // START OF FIREBASE CONFIGURATION // 
 
 const app = initializeApp(firebaseConfig)
 const database = getDatabase(app)
 const onlinePriceListDb = ref(database, "pricelist")
+const apiKeyDb = ref(database, "api")
 const ordersDb = ref(database, "orders")
 
 // PUSH DATA TO FIRESTORE FUNCTION
@@ -38,20 +40,23 @@ const sendOrderToDatabase = function(update){
 
 export default function App() {
 
-  
   const [pricelist, setPricelist] = React.useState([])
   const [loading, setLoading] = React.useState()
   const [cart, setCart] = React.useState(
     JSON.parse(window.localStorage.getItem('localCart')) || {}
   )
+  const [apiKey, setApiKey] = React.useState('')
 
   // IMPORT DATA FROM FIREBASE ON FIRST RENDER
   React.useEffect(() => {
     setLoading(true)
     onValue(onlinePriceListDb, function (snapshot) {
-      let priceListArray = Object.values(snapshot.val())
+      const priceListArray = Object.values(snapshot.val())
       setPricelist(priceListArray)
-      // console.log(priceListArray)
+    })
+    onValue(apiKeyDb, function (snapshot) {
+      const key = Object.values(snapshot.val())[0]
+      setApiKey(key)
     })
     setLoading(false)
   }, [])
@@ -62,30 +67,32 @@ export default function App() {
     <LoadingContext.Provider value={loading}>
       <PricelistContext.Provider value={pricelist}>
         <CartContext.Provider value={[cart, setCart]}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="tools" element={<Tools />} />
-                <Route path="ai" element={<AI />} />
-                <Route path="tools/:id" element={<ProductDetails />} />
-                <Route element={<AuthRequired />}>
-                  <Route path="cart" element={<Cart />} />
-                  <Route path="promos" element={<Promos />}>
-                    <Route index element={<PromosGeneral />} />
-                    <Route path="recommended" element={<PromosRecommended />} />
+          <APIContext.Provider value={[apiKey]}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route path="tools" element={<Tools />} />
+                  <Route path="ai" element={<AI />} />
+                  <Route path="tools/:id" element={<ProductDetails />} />
+                  <Route element={<AuthRequired />}>
+                    <Route path="cart" element={<Cart />} />
+                    <Route path="promos" element={<Promos />}>
+                      <Route index element={<PromosGeneral />} />
+                      <Route path="recommended" element={<PromosRecommended />} />
+                    </Route>
                   </Route>
+                  <Route path="login" element={<Login />} />
+                  <Route path="*" element={<NotFound />} />
                 </Route>
-                <Route path="login" element={<Login />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
+              </Routes>
+            </BrowserRouter>
+          </APIContext.Provider>
          </CartContext.Provider>
       </PricelistContext.Provider>
     </LoadingContext.Provider>
   )
 }
 
-export { PricelistContext, LoadingContext, CartContext, sendOrderToDatabase }
+export { PricelistContext, LoadingContext, CartContext, APIContext, sendOrderToDatabase }
 

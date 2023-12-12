@@ -33,4 +33,27 @@ function capitalizeFirstLetter(phrase){
 
 }
 
-export { saveToLocalStorageCart, getDataFromLocalStorage, getFilterClass, capitalizeFirstLetter }
+
+// FUNCTION TO CONVERT LINKS IN STING TO JSX
+function convertLinksToAnchors(text) {
+    const urlRegex = /(https?:\/\/[^\s]+[^\s.,])/g;
+  
+    // Split text into parts and create an array of React components
+    const parts = text.split(urlRegex).map((part, index) => {
+      if (index % 2 === 1) {
+        // If it's a URL, return an anchor component
+        return (
+          <a key={index} href={part} target="_blank">
+            {part}
+          </a>
+        );
+      } else {
+        // Otherwise, return the text as is
+        return <span key={index}>{part}</span>;
+      }
+    });
+  
+    return <div>{parts}</div>;
+  }
+
+export { saveToLocalStorageCart, getDataFromLocalStorage, getFilterClass, capitalizeFirstLetter, convertLinksToAnchors }
