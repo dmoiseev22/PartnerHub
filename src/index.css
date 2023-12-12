@@ -1768,6 +1768,33 @@ input::-webkit-inner-spin-button {
   display: inline
 }
 
+.chat-button-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chat-button {
+  color: #fff; /* Add your desired text color */
+  background-color: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  border: 1px solid red;
+}
+
+.chat-icon {
+  width: 60px;
+  transition: all 0.3s ease-in-out;
+}
+
+.chat-icon:hover {
+  scale: calc(1.05)
+}
+
 /* MEDIA QUERIES FOR HEADER */
 @media (min-width: 500px) {
   .navbar {

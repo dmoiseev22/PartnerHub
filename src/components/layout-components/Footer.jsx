@@ -1,6 +1,6 @@
 import React from "react"
 import Modal from "../modal/Modal"
-
+import ChatButton from "../assistant/ChatButton"
 
 export default function Footer() {
 
@@ -20,9 +20,14 @@ export default function Footer() {
             }, 3000)
         } 
     },[])
+
+    
     
     return (
         <footer className="footer">
+            
+            <ChatButton />
+
             <p className="footer-text">2023</p>
 
             {!cookiesConsentAccepted && isModalOpen ? <Modal closeModal={closeModal}/> : null}            

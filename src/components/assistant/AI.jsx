@@ -5,6 +5,8 @@ import OpenAI from 'openai';
 import { APIContext } from "../../App" 
 import { convertLinksToAnchors } from "../../util/util.jsx"
 
+import ChatButton from "./ChatButton.jsx";
+
 
 export default function AI () {
 
@@ -150,7 +152,7 @@ export default function AI () {
                   </>
                 
             }
-
+          <ChatButton />
         </div>
     )
 }
