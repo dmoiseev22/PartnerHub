@@ -2,20 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom"
 import CustomButton from "../../../components/buttons/CustomButton"
 import ProductDots from "./ProductDots";
-import { CartContext } from "../../../App";
 import { getDataFromLocalStorage } from "../../../util/util";
 import Icon from "../../../components/icons/Icon";
-
-
-
+import ScaleLoader from 'react-spinners/ScaleLoader'
 
 
 export default function Product( {product, isLoggedIn} ) {
-
-    const [cart, setCart] = React.useContext(CartContext)
-    const userData = getDataFromLocalStorage("partners-app-local-storage")
-
+   
     if (!product?.description) return <h3>Loading 3...</h3>
+
+    const userData = getDataFromLocalStorage("partners-app-local-storage")
+    const [isImageLoading, setIsImageLoading] = React.useState(true);
 
     const cardColor = {
         backgroundColor: 
@@ -36,7 +33,15 @@ export default function Product( {product, isLoggedIn} ) {
     const priceToDisplay = specialNetPrice || (standardPrice * discountMultiplier).toFixed(2) 
 
     const buttonText = isLoggedIn ? "€" + priceToDisplay : "Login for price"
-    const toolHeight = product.b > 0 ? ` ${product.height}/${product.b}` : ` ${product.height}` 
+
+    // HANDLE IMAGE LADING STATE
+    const handleImageLoad = () => {
+        setIsImageLoading(false);
+    };
+
+    const imageStyle = {
+        height: `${isImageLoading ? '0px' : 'auto'}`
+    }
     
     return (
         <div className="product-list-item" id={product.code}>
@@ -56,12 +61,16 @@ export default function Product( {product, isLoggedIn} ) {
                     <div className="product-card-details-primary">
                         
                         <div className="product-card-image">
+                                {/* DISPLAY LOADER IF IMAGES IS NOT LOADED */}
+                                {isImageLoading && <div className="image-loader-sm"><ScaleLoader color="#CC092F" /></div>}
+                                
                                 <Link to={`/tools/${product.code}`} aria-label="link to product description">
                                     <img
                                     loading="lazy"
+                                    style={imageStyle}
                                     src={product.pictureSmall}
                                     alt={`${product.code} image small-size`}
-                                    // src={blank} 
+                                    onLoad={handleImageLoad}
                                     />         
                                 </Link>           
                         </div>
@@ -100,7 +109,6 @@ export default function Product( {product, isLoggedIn} ) {
                         </div>
                         <div className="product-card-buttons">
 
-
                             <Link 
                                 className="product-card-details-link" 
                                 to={`/tools/${product.code}`} 
@@ -116,6 +124,7 @@ export default function Product( {product, isLoggedIn} ) {
                                 >
                                     {buttonText}
                             </CustomButton>
+
                         </div>
                     </div>
                 </div>

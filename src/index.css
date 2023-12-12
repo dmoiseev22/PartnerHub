@@ -703,7 +703,7 @@ main {
 }
 
 .product-card-image {
-  width: auto;
+  width: 100%;
   height: auto;
   min-width: 130px;
   min-height: 130px;
@@ -930,10 +930,30 @@ button:active {
 
 
 .article-page-main {
+  width: 100%;
+  
   padding: 1em 0.5rem;
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+.image-loader-bg {
+  min-width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-loader-sm{
+  min-width: auto;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .article-page-main-img {

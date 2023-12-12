@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams, Link, useLocation } from "react-router-dom"
-import { LoadingContext, PricelistContext } from "../../../App"
-import blank from "../../../assets/blades/blank.png"
+import { PricelistContext } from "../../../App"
+import ScaleLoader from 'react-spinners/ScaleLoader'
+
 import ProductDots from "./ProductDots";
 import CustomButton from "../../../components/buttons/CustomButton";
 import Icon from "../../../components/icons/Icon";
@@ -12,16 +13,17 @@ import file from "../../../assets/fa-icons/file-regular.svg"
 
 export default function ProductDetails() {
     const pricelist = React.useContext(PricelistContext)
-    const loading = React.useContext(LoadingContext)
+
     const userData = JSON.parse(window.localStorage.getItem("partners-app-local-storage"))
     const isLoggedIn = localStorage.getItem("loggedin")
     const { id } = useParams()
-    const location = useLocation()
 
     if (pricelist.length < 1) return <h3>Loading...</h3>
 
     const product = pricelist.find(el => el.code == id)
 
+    // HANDLE IMAGE LOADING ERRORS
+    const [isImageLoading, setIsImageLoading] = React.useState(true);
 
     // GET THE CORRECT PRICE OR LOGIN MESSAGE FOR THE BUTTON
     const specialNetPrice = userData?.specialprices[product?.code]
@@ -34,10 +36,19 @@ export default function ProductDetails() {
     const discount = (standardPrice - priceToDisplay) / standardPrice * 100
 
 
+    // IMAGE LOADE HANDLER FOR SPINNER
+    const handleImageLoad = () => {
+        setIsImageLoading(false);
+    };
+
+    const imageStyle = {
+        height: `${isImageLoading ? '0px' : 'auto'}`
+    }
+
     return (
         <div className="article-page-outter">
 
-            {/* LINKS ABOVE */}
+            {/* NAVIGATION LINKS */}
             <div className="back-buttons-container"><Link
                     to=".."
                     relative="path"
@@ -66,16 +77,19 @@ export default function ProductDetails() {
 
                         {/* PRODUCT PICTURE */}
                         <div className="article-page-main-img">
+                            {/* RENDER SPINNER IF IMAGE IS NOT LOADED */}
+                            {isImageLoading && <div className="image-loader-bg"><ScaleLoader color="#CC092F" /></div>}
                             <img
                                 loading="lazy"
-                                src={product.pictureBig || blank}
+                                src={product.pictureBig}
+                                onLoad={handleImageLoad}
+                                style={imageStyle}
                                 alt={`${product.code} image full-size`}
                             />
                             <div className="article-label">
                                 <p>{product.quality}</p>
                             </div>
                         </div>
-
                         {/* PRODUCT ICONS */}
                         <div className="product-card-details-icons-wrapper">
                             <div className="icons-primary">

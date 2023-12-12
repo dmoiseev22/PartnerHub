@@ -2,7 +2,7 @@
 
 LIVE DEMO: [PARTNER HUB](https://partner-hub.netlify.app/)
 
-Login: "DemoUser"
+**Demo ID Login: "DemoUser"**
 
 ## **TECH STACK:**
 
