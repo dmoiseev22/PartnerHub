@@ -23,7 +23,7 @@ const welcomeQueryHints = (
   <div className="queryHints-container">
     <h4>You can ask me anything but the prices, for example:</h4>
     <ol>
-      <li>Recommmend me 115mm blade to cut tiles with very good finish</li>
+      <li>Recommmend 115mm blade to cut tiles with perfect finish</li>
       <li>What is the difference between 20010200 and 20000200?</li>
       <li>What is the best tool for grinding concrete on angle grinder 125mm?</li>
       <li>Suggest the blade with smallest width to cut porcelain in diameter 115mm</li>
@@ -165,7 +165,7 @@ export default function AI () {
             {fetchingData ? 
                 <BeatLoader className="ai-loader"  loading={fetchingData} color="#C31313" width="160px"/> : 
                 <>
-                <h4 className="reply"><b>AI:</b><span className="inline">{completion}</span> </h4>
+                <h4 className="reply"><b>AI: </b><span className="inline">{completion}</span> </h4>
                 <div className="queryhints">{queryHints}</div>
                 </>
             }
