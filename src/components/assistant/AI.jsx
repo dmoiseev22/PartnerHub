@@ -45,6 +45,7 @@ export default function AI () {
 
     const handleSubmit = async function(e) {
         e.preventDefault();
+        if (input === "") return
         setFetchingData(true)
         await main(input);
         setInput("")
