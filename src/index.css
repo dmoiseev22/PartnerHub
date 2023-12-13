@@ -1688,7 +1688,8 @@ input::-webkit-inner-spin-button {
   height: 50px;
   margin: 30px 20px;
   padding: 20px 20px;
-  border: 2px solid #CC092F;
+  /* border: 2px solid #CC092F; */
+  border: 2px solid #2833BC;
   border-radius: 25px;
   outline: none !important;
 }
@@ -1698,17 +1699,50 @@ input::-webkit-inner-spin-button {
 } */
 
 .assistant-container button {
-  width: 100px;
+  width: 200px;
   height: 40px;
   padding: 0.3rem 1rem;
   border-radius: 25px;
   border: none;
-  background-color: #CC092F;
+  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
+  box-shadow: 0 0 20px #eee;
+  background-size: 200% auto;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.5s;
+
 }
+.assistant-container button:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+         
+         
+.btn-grad {
+  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
 
 .reply {
   min-width: 350px;

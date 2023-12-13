@@ -35,25 +35,29 @@ function capitalizeFirstLetter(phrase){
 
 
 // FUNCTION TO CONVERT LINKS IN STING TO JSX
-function convertLinksToAnchors(text) {
-    const urlRegex = /(https?:\/\/[^\s]+[^\s.,])/g;
-  
+  function convertLinksToAnchors(text) {
+    const urlRegex = /\b(https?:\/\/[^\s]+[^\s.,)]*)\b|\[([^\]]*)\]/g;
+
     // Split text into parts and create an array of React components
     const parts = text.split(urlRegex).map((part, index) => {
-      if (index % 2 === 1) {
+      if (index % 3 === 1) {
         // If it's a URL, return an anchor component
         return (
           <a key={index} href={part} target="_blank">
             {part}
           </a>
         );
+      } else if (index % 3 === 2) {
+        // If it's content inside brackets, skip it
+        return null;
       } else {
         // Otherwise, return the text as is
         return <span key={index}>{part}</span>;
       }
-    });
-  
+    }).filter(part => part !== null); // Remove null elements
+
     return <div>{parts}</div>;
   }
+
 
 export { saveToLocalStorageCart, getDataFromLocalStorage, getFilterClass, capitalizeFirstLetter, convertLinksToAnchors }
