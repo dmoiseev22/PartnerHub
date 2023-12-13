@@ -1670,6 +1670,7 @@ input::-webkit-inner-spin-button {
 
 .assistant-container h1{
   margin: 20px 0 10px;
+  color: #2833BC;
 }
 
 .assistant-container form {
