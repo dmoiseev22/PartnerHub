@@ -1670,7 +1670,7 @@ input::-webkit-inner-spin-button {
 
 .assistant-container h1{
   margin: 20px 0 10px;
-  color: #2833BC;
+  color: #080b2b;
 }
 
 .assistant-container form {
@@ -1693,11 +1693,16 @@ input::-webkit-inner-spin-button {
   border: 2px solid #2833BC;
   border-radius: 25px;
   outline: none !important;
+  
+  
 }
 
-/* .assistant-container input:active {
-  border: 1p solid green;
-} */
+.assistant-container input:focus {
+  border: 2px solid #2833BC;
+  -webkit-box-shadow: 0px 0px 5px rgba(56, 169, 240, 0.75);
+  -moz-box-shadow: 0px 0px 5px rgba(56, 169, 240, 0.75);
+  box-shadow: 0px 0px 5px rgba(56, 169, 240, 0.75);
+}
 
 .assistant-container button {
   width: 200px;
@@ -1723,27 +1728,6 @@ input::-webkit-inner-spin-button {
 
          
          
-.btn-grad {
-  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
-  margin: 10px;
-  padding: 15px 45px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;            
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
-  display: block;
-}
-
-.btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
-}
-
-
 
 .reply {
   min-width: 350px;
@@ -1877,6 +1861,13 @@ input::-webkit-inner-spin-button {
     padding: 0.3rem 1rem;
     border: 2px solid #CC092F;
     border-radius: 25px;
+  }
+
+  .search-by-article input:focus {
+    border: 2px solid #CC092F;
+    -webkit-box-shadow: 0px 0px 2px #CC092F;
+    -moz-box-shadow: 0px 0px 2px #CC092F;
+    box-shadow: 0px 0px 2px #CC092F;
   }
 
   .article-label {
