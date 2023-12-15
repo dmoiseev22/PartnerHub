@@ -195,6 +195,7 @@ main {
   justify-content: center;
   min-width: 350px;
   width: 95%;
+  height: auto;
   max-width: 1400px;
   padding: 1em;
 }
@@ -324,7 +325,7 @@ main {
   }
 
   .home-page-range-inner img {
-    max-width: 90px;
+    max-width: 80px;
   }
 }
 
@@ -2106,7 +2107,7 @@ input::-webkit-inner-spin-button {
   }
 
   .home-about-inner-container img {
-    width: 40px;
+    width: 34px;
     height: auto;
     margin: 10px
   }
@@ -2260,6 +2261,11 @@ input::-webkit-inner-spin-button {
 }
 
 @media (min-width: 1100px) {
+
+  .home-about-inner-container img {
+    width: 40px;
+  }
+
   .home-page-welcome-section h1 {
     max-width: 600px;
     font-size: 54px;
