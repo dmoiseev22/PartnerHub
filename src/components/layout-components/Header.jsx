@@ -60,7 +60,7 @@ export default function Header() {
                     }
 
                 </div>
-                {/* MENU ITEMS VISIBLE 1 OF 2 CONDITIONS ARE MET: SCREENS > 500px WIDTH OR IF HAMBURGER IS NOT VISIBLE */}
+                {/* MENU ITEMS VISIBLE IF 1 OF 2 CONDITIONS ARE MET: SCREENS > 500px WIDTH OR IF HAMBURGER IS NOT VISIBLE */}
                 {(isOpen || (!isHamburgerVisible)) &&
                     (<div className="navbar-links-container">
                         <ul className="navbar-links" >

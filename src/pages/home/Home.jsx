@@ -18,7 +18,9 @@ export default function Home() {
 
         <div>
             <div className="home-page-welcome-section" style={{backgroundImage: `url(${backgroundImg})`}}>
-                <h1>WELCOME TO CIS PARTNER HUB</h1>
+                <h1>WELCOME TO CIS PARTNER HUB <br/>
+                    {/* <span className="home-page-secondary-title">Your knowledge base</span> */}
+                </h1>
                 <Link to="/tools">
                     <button
                         className="home-explore-button"
@@ -117,6 +119,28 @@ export default function Home() {
 
                 </div>
             </div>
+
+            <div className="home-page-range-section">
+
+                <h3>AI Assistant</h3>
+
+                <div className="home-page-range-inner">
+
+                    <p>Ask our AI Assistant to recommend a tool or compare various options. <br/> The more precise is your request, the better </p>
+                    <p> <span style={{color: "red", fontSize: '12px'}}> Beta version</span></p>
+
+
+                    <Link to="ai">
+                    <button
+                        className="home-button red-btn"
+                        aria-label="start order button" >
+                        CHAT NOW!
+                    </button>
+                    </Link>
+
+                </div>
+            </div>
+
 
             <div className="home-page-why-section">
                 <h3>Factory tour</h3>

@@ -145,6 +145,17 @@ main {
   padding: 1rem 2rem;
 }
 
+.home-page-secondary-title {
+  color: #b0b0b0;
+  letter-spacing: 5px;
+  text-shadow: 2px 2px #26030f;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 1em auto;
+  /* text-transform: uppercase; */
+  line-height: 1.5em;
+}
 
 
 .home-page-about-section,
@@ -1721,7 +1732,8 @@ input::-webkit-inner-spin-button {
   transition: 0.5s;
 
 }
-.assistant-container button:hover {
+.assistant-container button:focus,
+.assistant-container button:active {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;

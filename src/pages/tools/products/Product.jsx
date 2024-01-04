@@ -9,10 +9,10 @@ import ScaleLoader from 'react-spinners/ScaleLoader'
 
 export default function Product( {product, isLoggedIn} ) {
    
-    if (!product?.description) return <h3>Loading 3...</h3>
-
     const userData = getDataFromLocalStorage("partners-app-local-storage")
     const [isImageLoading, setIsImageLoading] = React.useState(true);
+    
+    if (!product?.description) return <h3>Loading...</h3>
 
     const cardColor = {
         backgroundColor: 
@@ -34,7 +34,7 @@ export default function Product( {product, isLoggedIn} ) {
 
     const buttonText = isLoggedIn ? "€" + priceToDisplay : "Login for price"
 
-    // HANDLE IMAGE LADING STATE
+    // HANDLE IMAGE LOADING STATE
     const handleImageLoad = () => {
         setIsImageLoading(false);
     };

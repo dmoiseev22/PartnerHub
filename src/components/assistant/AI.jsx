@@ -126,7 +126,7 @@ export default function AI () {
       setCompletion(convertLinksToAnchors(choices[0].message.content));
     }
 
-    console.log("chatHistory: ", chatHistory)
+    // console.log("chatHistory: ", chatHistory)
 
     return (
         <div className="assistant-container">
