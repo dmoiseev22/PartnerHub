@@ -13,15 +13,15 @@ export default function AI () {
     const API_KEY = React.useContext(APIContext)
 
     const welcomeMessage = `
-        Hi there! I am a Solga AI Assistant. You can ask me anything you want about Diamond Tools and I'll be happy to assist! I know about 115-400 diamond blades and diamond cups, techcnical characteristics and ready to support you for any related inquery. For prices, please ask your manager. 
+        Hi there! I am a Solga AI Assistant. You can ask me anything you want about Diamond Tools and I'll be happy to assist! I know about 115-400 diamond blades and diamond cups, technical characteristics and ready to support you for any related inquery. For prices, please ask your manager. 
     `
     const welcomeQueryHints = (
       <div className="queryHints-container">
         <h4>Ask me anything about Diamond Tools, for example:</h4>
         <ol>
           <div onClick={handleClick}><li >Recommmend blade 115 mm for hard ceramics and include link to product details</li></div>
-          <div onClick={handleClick}><li>В чем разница между дисками 20010200 и 20000200?</li></div>
           <div onClick={handleClick}><li>Quelle est la meilleure couronne pour le béton sur une meuleuse d'angle de 125 mm?</li></div>
+          <div onClick={handleClick}><li>В чем разница между дисками 20010200 и 20000200?</li></div>
           <div onClick={handleClick}><li>Мi disco corta lento, ¿cuál puede ser el problema?</li></div>
           <div onClick={handleClick}><li>قم بتوفير رابط للحصول على معلومات مفصلة حول شفرة 23117350 SWIFT</li></div>
         </ol>
