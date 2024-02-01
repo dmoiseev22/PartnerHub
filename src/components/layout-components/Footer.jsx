@@ -28,7 +28,8 @@ export default function Footer() {
             
             <ChatButton />
 
-            <p className="footer-text">2023</p>
+            <p className="footer-text">2024. Demo version.</p>
+            <p className="footer-text">Built by Dmitry Moiseev</p>
 
             {!cookiesConsentAccepted && isModalOpen ? <Modal closeModal={closeModal}/> : null}            
 
