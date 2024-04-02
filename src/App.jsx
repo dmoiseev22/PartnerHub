@@ -71,11 +71,11 @@ export default function App() {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Layout />}>
-                  <Route index element={<Home />} />
-                  <Route path="tools" element={<Tools />} />
-                  <Route path="ai" element={<AI />} />
-                  <Route path="tools/:id" element={<ProductDetails />} />
                   <Route element={<AuthRequired />}>
+                    <Route index element={<Home />} />
+                    <Route path="tools" element={<Tools />} />
+                    <Route path="ai" element={<AI />} />
+                    <Route path="tools/:id" element={<ProductDetails />} />
                     <Route path="cart" element={<Cart />} />
                     <Route path="promos" element={<Promos />}>
                       <Route index element={<PromosGeneral />} />
