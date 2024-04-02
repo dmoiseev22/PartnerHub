@@ -10,7 +10,7 @@ export default function AuthRequired() {
             <Navigate
                 to="/login"
                 state={{
-                    message: "You must log in first",
+                    message: "Authentication required",
                     from: location.pathname
                 }}
                 replace
