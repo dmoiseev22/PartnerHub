@@ -18,7 +18,7 @@ export default function Home() {
 
         <div>
             <div className="home-page-welcome-section" style={{backgroundImage: `url(${backgroundImg})`}}>
-                <h1>WELCOME TO CIS PARTNER HUB <br/>
+                <h1>WELCOME TO DIAMOND PARTNER HUB <br/>
                     {/* <span className="home-page-secondary-title">Your knowledge base</span> */}
                 </h1>
                 <Link to="/tools">
