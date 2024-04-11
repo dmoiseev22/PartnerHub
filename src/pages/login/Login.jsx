@@ -5,6 +5,8 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, push, onValue } from "firebase/database" 
 import { useLocation, useNavigate } from "react-router-dom"
 import firebaseConfig from "../../components/authentication/config";
+import { sendLoginToDatabase } from "../../App"
+
 
 export default function Login() {
     const [input, setInput] = React.useState("")
@@ -53,14 +55,26 @@ export default function Login() {
         e.preventDefault()
         
         if (isLoggedIn) {
+            // LOG OUT AND DELETE LOCAL DATA
             window.localStorage.removeItem("partners-app-local-storage")
             window.localStorage.removeItem("loggedin")
             setIsLoggedIn(!isLoggedIn)
+        } else {
+            // UPLOAD LOGIN EVENT TO DATABASE
+            const dateObject = new Date().toLocaleString()
+            const time = dateObject.toLocaleString(dateObject)
+            sendLoginToDatabase({
+                "user": input,
+                "time": time
+            })
         }
 
         setClientId(input)
+
         setInput("")
+
     }
+    
     
     function handleChange(e){
         setLoading(false)
@@ -83,7 +97,7 @@ export default function Login() {
     function returnToPrevPage(){
         setTimeout(()=>{
             navigate(from, { replace: true })
-        }, 2000)
+        }, 4000)
     }
 
     return (
@@ -145,8 +159,8 @@ export default function Login() {
                     {
                     !loading && 
                         <button
-                        className="login-button" 
-                        aria-label="login button"
+                            className="login-button" 
+                            aria-label="login button"
                         >   
                             {(!isLoggedIn && !loading) ? "LOG IN" : "LOG OUT" }
                     </button>

@@ -184,6 +184,7 @@ export default function Cart() {
                                     })
                                     setShowSentNotice(true)
                                 }}
+                    
                                 className="send-button" >
                                     SEND
                             </button>

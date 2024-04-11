@@ -30,10 +30,15 @@ const database = getDatabase(app)
 const onlinePriceListDb = ref(database, "pricelist")
 const apiKeyDb = ref(database, "api")
 const ordersDb = ref(database, "orders")
+const logins = ref(database, "logins")
 
-// PUSH DATA TO FIRESTORE FUNCTION
+// PUSH DATA TO FIRESTORE FUNCTIONS
 const sendOrderToDatabase = function(update){
   push(ordersDb, update)
+}
+
+const sendLoginToDatabase = function(update){
+  push(logins, update)
 }
 
 // END OF FIREBASE CONFIGURATION // 
@@ -94,5 +99,5 @@ export default function App() {
   )
 }
 
-export { PricelistContext, LoadingContext, CartContext, APIContext, sendOrderToDatabase }
+export { PricelistContext, LoadingContext, CartContext, APIContext, sendOrderToDatabase, sendLoginToDatabase }
 
