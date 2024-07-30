@@ -53,6 +53,7 @@ export default function App() {
   const [apiKey, setApiKey] = React.useState('')
 
   // IMPORT DATA FROM FIREBASE ON FIRST RENDER
+  
   React.useEffect(() => {
     setLoading(true)
     onValue(onlinePriceListDb, function (snapshot) {
