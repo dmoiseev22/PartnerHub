@@ -28,7 +28,7 @@ export default function Footer() {
             
             <ChatButton />
 
-            <p className="footer-text">2024. Demo version. Built by D.M.</p>
+            <p className="footer-text">2024. All rights reserved.</p>
 
             {!cookiesConsentAccepted && isModalOpen ? <Modal closeModal={closeModal}/> : null}            
 
